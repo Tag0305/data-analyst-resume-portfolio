@@ -308,16 +308,19 @@
                     <!-- Project 3 -->
                     <div class="project-mini-card card fade-in-up">
                         <div class="proj-badge-row">
-                            <span class="project-badge">NLP Analytics</span>
+                            <span class="project-badge">Cloud Pipeline + dbt</span>
                         </div>
-                        <span class="proj-icon"><i class="fa-solid fa-chart-line"></i></span>
-                        <h3>Social Sentiment & Stock Price Correlation</h3>
-                        <p>Processed financial news feeds and reddit threads using NLP sentiment indices (NLTK VADER) and correlated sentiment indicators with stock price movements over a 60-day historical window.</p>
+                        <span class="proj-icon"><i class="fa-solid fa-server"></i></span>
+                        <h3>End-to-End Cloud Data Pipeline Simulation</h3>
+                        <p>Architected an ELT pipeline fetching live market rates. Loads raw dumps into an SQLite (BigQuery simulation) warehouse, running dbt-style SQL transformation models to clean, categorize, and partition assets.</p>
                         <div class="tech-tags">
                             <span>Python</span>
-                            <span>NLTK</span>
-                            <span>SQL</span>
-                            <span>Power BI</span>
+                            <span>SQL (CTEs)</span>
+                            <span>SQLite</span>
+                            <span>dbt Core</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <a href="https://github.com/Tag0305/cloud-data-pipeline-simulation" target="_blank" style="color: var(--primary); font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-brands fa-github"></i> GitHub Repository</a>
                         </div>
                     </div>
                 </div>
@@ -481,6 +484,8 @@
                         <li><strong>SQL E-Commerce Business Analytics Project</strong>: Designed and loaded a multi-table relational database (<strong>PostgreSQL</strong>) simulating e-commerce customer transaction histories. Optimized SQL analytics queries using <strong>CTEs</strong>, <strong>window functions</strong> (LEAD, LAG, DENSE_RANK), and self-joins to track customer cohort retention and monthly growth. Identified product groups showing high customer repeat rates (<strong>40%+ retention</strong>) to direct targeted marketing and formulated KPIs (AOV, CLV, Churn).</li>
                         
                         <li style="margin-top: 10px;"><strong>Customer Churn Analytics & Predictive Modeling</strong>: Processed exploratory data analysis (EDA) on a 1,000-customer dataset using <strong>Python</strong> (<strong>Pandas</strong>, <strong>Seaborn</strong>) to uncover factors influencing customer cancellations. Engineered and scaled categorical/numerical variables; trained and compared <strong>Logistic Regression</strong> and <strong>Random Forest Classifiers</strong>, achieving <strong>88.0% prediction accuracy</strong>. Calculated <strong>feature importances</strong>, revealing contract terms and subscription tenure as primary retention drivers.</li>
+                        
+                        <li style="margin-top: 10px;"><strong>End-to-End Cloud Data Pipeline Simulation</strong>: Architected an automated data pipeline using <strong>Python</strong> to ingest real-time market assets via API. Configured and loaded streaming records into a local database warehouse (<strong>SQLite / BigQuery simulation</strong>), executing <strong>dbt-style CTE SQL transformations</strong> to partition, clean, and model pricing volatility and market cap metrics.</li>
                     </ul>
                 </section>
 
