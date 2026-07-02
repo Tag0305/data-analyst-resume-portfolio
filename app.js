@@ -312,7 +312,49 @@ const ANALYTICS_DATA = {
 let analyticsChartInstance = null;
 
 // ==========================================
-// 4. Chart Renderer Logic
+// 4. SQL Syntax Highlighter Engine (Added)
+// ==========================================
+function highlightSQL(sqlText) {
+    // Escape HTML special characters
+    let html = sqlText
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    
+    // Highlight Single-line Comments
+    html = html.replace(/(--.*)/g, '<span class="sql-comment">$1</span>');
+    
+    // Highlight String Literals (e.g. 'Month-to-month')
+    html = html.replace(/('[^']*')/g, '<span class="sql-str">$1</span>');
+    
+    // Highlight SQL Functions
+    const sqlFuncs = [
+        'SUM', 'COUNT', 'AVG', 'ROUND', 'LAG', 'DENSE_RANK', 
+        'DATE_TRUNC', 'CONCAT', 'NULLIF', 'EXTRACT', 'COALESCE'
+    ];
+    sqlFuncs.forEach(func => {
+        const regex = new RegExp(`\\b(${func})\\b`, 'gi');
+        html = html.replace(regex, '<span class="sql-func">$1</span>');
+    });
+    
+    // Highlight SQL Keywords
+    const sqlKeywords = [
+        'WITH', 'SELECT', 'FROM', 'JOIN', 'LEFT JOIN', 'ON', 'WHERE', 
+        'GROUP BY', 'ORDER BY', 'AS', 'OVER', 'PARTITION BY', 'CASE', 
+        'WHEN', 'THEN', 'ELSE', 'END', 'AND', 'DESC', 'ASC', 'OR', 'NOT', 
+        'NULL', 'ROW_NUMBER', 'RANK', 'DECIMAL', 'INTEGER', 'VARCHAR', 
+        'SERIAL', 'PRIMARY KEY', 'REFERENCES', 'CHECK', 'DEFAULT'
+    ];
+    sqlKeywords.forEach(keyword => {
+        const regex = new RegExp(`\\b(${keyword})\\b`, 'g'); // Case-sensitive matching
+        html = html.replace(regex, '<span class="sql-keyword">$1</span>');
+    });
+    
+    return html;
+}
+
+// ==========================================
+// 5. Chart Renderer Logic
 // ==========================================
 function renderSQLChart(queryKey) {
     const chartContext = document.getElementById('liveAnalyticsChart').getContext('2d');
@@ -405,13 +447,13 @@ function updateKPIs(kpis) {
 }
 
 // ==========================================
-// 5. DOM Initialization & Event Handlers
+// 6. DOM Initialization & Event Handlers
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Set initial SQL query lab contents
+    // Set initial SQL query lab contents with syntax highlighting
     const initialQueryKey = 'rpr';
-    document.getElementById('sqlCodeDisplay').textContent = SQL_QUERIES[initialQueryKey];
+    document.getElementById('sqlCodeDisplay').innerHTML = highlightSQL(SQL_QUERIES[initialQueryKey]);
     renderSQLChart(initialQueryKey);
     
     // Handle SQL Query Tabs
@@ -429,17 +471,18 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('queryTitle').textContent = `${titleText} Query`;
             document.getElementById('queryDesc').textContent = QUERY_DESCS[queryKey];
             
-            // Update code display
-            document.getElementById('sqlCodeDisplay').textContent = SQL_QUERIES[queryKey];
+            // Update code display with syntax highlighting
+            document.getElementById('sqlCodeDisplay').innerHTML = highlightSQL(SQL_QUERIES[queryKey]);
             
             // Re-render chart
             renderSQLChart(queryKey);
         });
     });
 
-    // Code Copy Functionality
+    // Code Copy Functionality (ignores HTML syntax tags)
     document.getElementById('copyCodeBtn').addEventListener('click', () => {
-        const codeText = document.getElementById('sqlCodeDisplay').textContent;
+        const codeDisplay = document.getElementById('sqlCodeDisplay');
+        const codeText = codeDisplay.textContent; // textContent automatically strips HTML span tags!
         navigator.clipboard.writeText(codeText).then(() => {
             const copyBtn = document.getElementById('copyCodeBtn');
             copyBtn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
@@ -520,5 +563,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('active');
             }
         });
+    });
+
+    // Scroll to Top Button Controller (Added)
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Fade-in Scroll Animations Observer (Added)
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' // triggers slightly before entering viewport
+    });
+
+    document.querySelectorAll('.fade-in-up').forEach(element => {
+        fadeObserver.observe(element);
     });
 });
