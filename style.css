@@ -1230,7 +1230,7 @@ a {
 }
 
 /* ==========================================
-   10. Formal Resume Layout & Print Settings (Prem Kumar Format)
+   10. Formal Resume Layout & Print Settings (Prem Kumar Format V2)
    ========================================== */
 .print-actions {
     display: flex;
@@ -1245,32 +1245,39 @@ a {
     color: #000000;
     max-width: 800px;
     margin: 0 auto 80px;
-    padding: 40px 50px;
+    padding: 35px 45px;
     border-radius: 4px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    font-family: 'Times New Roman', Georgia, serif; /* Elegant Serif style like Prem's */
-    line-height: 1.4;
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Clean Sans-Serif like Prem's */
+    line-height: 1.45;
 }
 
 /* Center header like Prem's */
 .resume-header {
     text-align: center;
     margin-bottom: 12px;
+    border-bottom: 1px solid #111111; /* Horizontal line below header */
+    padding-bottom: 10px;
 }
 
 .resume-header h1 {
-    font-family: 'Times New Roman', Georgia, serif;
-    font-size: 2.3rem;
-    font-weight: normal; /* Classic serif font weight */
+    font-family: 'Times New Roman', Georgia, serif; /* Centered serif name */
+    font-size: 2.5rem;
+    font-weight: bold;
     color: #000000;
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    letter-spacing: -0.5px;
 }
 
 .header-contacts-row {
     font-size: 0.85rem;
     color: #000000;
     margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
 .header-contacts-row span {
@@ -1285,26 +1292,23 @@ a {
 }
 
 .resume-divider {
-    border: 0;
-    height: 1px;
-    background: #000000;
-    margin: 12px 0;
+    display: none; /* Replaced by border-bottom in header */
 }
 
 .resume-section {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 /* Section titles with full width horizontal rule underneath */
 .resume-section h3 {
-    font-family: 'Times New Roman', Georgia, serif;
-    font-size: 1.15rem;
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #000000;
     border-bottom: 1px solid #000000;
     padding-bottom: 2px;
     margin-bottom: 8px;
-    text-transform: capitalize; /* Just Capitalize instead of uppercase */
+    text-transform: capitalize; /* Just Capitalize */
 }
 
 .resume-section p {
@@ -1314,72 +1318,58 @@ a {
     margin: 0;
 }
 
-/* Skills table styling in print */
-.skills-table {
-    width: 100%;
-    border-collapse: collapse;
+/* Skills blocks styling in print */
+.skills-block {
     font-size: 0.88rem;
 }
-
-.skills-table td {
-    padding: 3px 0;
-    vertical-align: top;
-}
-
-.skills-table td.skill-category {
-    width: 190px;
-    color: #000000;
-    font-weight: bold;
-}
-
-.skills-table td:not(.skill-category) {
-    color: #000000;
+.skills-block p {
+    margin-bottom: 4px;
+    text-align: left;
 }
 
 /* Projects and education list in print */
-.resume-project, .education-item {
-    margin-bottom: 10px;
+.education-item {
+    margin-bottom: 8px;
 }
 
 /* Align names left, dates right */
-.project-title-row, .edu-row {
+.edu-row {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
     color: #000000;
 }
 
-.edu-inst, .project-name {
+.edu-inst {
     font-size: 0.9rem;
-}
-
-.project-link-text {
-    font-size: 0.8rem;
-    color: #000000;
-    margin-bottom: 3px;
-    font-family: var(--font-mono);
+    font-weight: bold;
 }
 
 .edu-sub-row {
     display: flex;
     justify-content: space-between;
     font-size: 0.85rem;
-    color: #000000;
+    color: #475569;
     margin-bottom: 2px;
 }
 
-.bullet-list {
-    margin-left: 15px;
-    font-size: 0.85rem;
-    color: #000000;
+.edu-degree {
+    font-style: italic;
 }
 
-.bullet-list li {
-    margin-bottom: 2px;
+.bullet-list-projects {
+    margin-left: 18px;
+    font-size: 0.88rem;
+    color: #000000;
+    list-style-type: disc;
+}
+
+.bullet-list-projects li {
+    margin-bottom: 6px;
+    text-align: justify;
     padding-left: 2px;
 }
 
 .edu-location, .edu-date, .project-date {
     font-weight: normal;
-    color: #000000;
 }
