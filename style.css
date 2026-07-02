@@ -1,0 +1,1284 @@
+/* style.css - Premium Design System & Print-Optimized Stylesheet */
+
+/* ==========================================
+   1. Theme Configurations & CSS Custom Variables
+   ========================================== */
+:root {
+    /* Dark Theme (Default) */
+    --bg-main: #0b0f19;
+    --bg-surface: #131b2e;
+    --bg-surface-glass: rgba(19, 27, 46, 0.7);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --primary: #10b981; /* Emerald */
+    --primary-glow: rgba(16, 185, 129, 0.2);
+    --accent: #06b6d4; /* Teal */
+    --accent-glow: rgba(6, 182, 212, 0.2);
+    --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --code-bg: #090d16;
+    
+    /* Font Families */
+    --font-heading: 'Outfit', 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Layout Constants */
+    --header-height: 80px;
+    --transition-speed: 0.3s;
+    --max-width: 1200px;
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+    --bg-main: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-glass: rgba(255, 255, 255, 0.8);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --primary: #059669;
+    --primary-glow: rgba(5, 150, 105, 0.1);
+    --accent: #0891b2;
+    --accent-glow: rgba(8, 145, 178, 0.1);
+    --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    --code-bg: #f1f5f9;
+}
+
+/* ==========================================
+   2. Base Styles & Global Resets
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+/* Utility classes */
+.highlight {
+    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-success {
+    color: var(--primary);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.section-padding {
+    padding: 100px 24px;
+}
+
+.card {
+    background: var(--bg-surface-glass);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 15px 35px -5px var(--primary-glow);
+}
+
+/* ==========================================
+   3. Header & Navigation Styles
+   ========================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--bg-surface-glass);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo-icon {
+    font-size: 1.6rem;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary);
+}
+
+.nav-link.active::after, .nav-link:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.action-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.action-btn:hover {
+    background: var(--border-color);
+    border-color: var(--text-secondary);
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    border: none;
+}
+
+.primary-btn:hover {
+    box-shadow: 0 0 20px 0 var(--primary-glow);
+    filter: brightness(1.1);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.secondary-btn:hover {
+    background: var(--border-color);
+    border-color: var(--text-secondary);
+}
+
+/* ==========================================
+   4. Hero Section Styles
+   ========================================== */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    max-width: var(--max-width);
+    margin: calc(var(--header-height) + 40px) auto 0;
+    padding: 80px 24px;
+    position: relative;
+    align-items: center;
+}
+
+.hero-bg-gradients {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.grad-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+}
+
+.grad-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary);
+    top: -50px;
+    right: 10%;
+}
+
+.grad-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    bottom: 50px;
+    left: 5%;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.badge {
+    background: var(--primary-glow);
+    color: var(--primary);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.hero-tagline {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-bottom: 40px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Dashboard Mock Widget */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-preview-card {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.dashboard-preview-card .card-header {
+    background: #1e293b;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-preview-card .card-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dashboard-preview-card .card-header .dot.red { background: #ef4444; }
+.dashboard-preview-card .card-header .dot.yellow { background: #f59e0b; }
+.dashboard-preview-card .card-header .dot.green { background: #10b981; }
+.dashboard-preview-card .card-header .title {
+    margin-left: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #94a3b8;
+    font-family: var(--font-mono);
+}
+
+.dashboard-preview-card .card-body {
+    padding: 20px;
+}
+
+.kpi-mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.kpi-mini-item {
+    background: #1e293b;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.kpi-mini-item .label {
+    font-size: 0.75rem;
+    color: #64748b;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.kpi-mini-item .val {
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kpi-mini-item .trend.positive {
+    color: #10b981;
+    font-size: 0.8rem;
+}
+
+.chart-mini-container {
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding-top: 10px;
+    border-bottom: 1px solid #334155;
+    border-left: 1px solid #334155;
+    padding-left: 8px;
+}
+
+.chart-mini-container .bar {
+    flex: 1;
+    background: linear-gradient(to top, var(--primary), var(--accent));
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    animation: barGrow 1.5s ease-out forwards;
+    transform-origin: bottom;
+}
+
+@keyframes barGrow {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+}
+
+/* ==========================================
+   5. Section Architecture Layouts (About, Skills)
+   ========================================== */
+.portfolio-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.section-tag {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 10px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 32px;
+}
+
+.about-text-card, .about-stats-card {
+    padding: 40px;
+}
+
+.paragraph {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.paragraph strong {
+    color: var(--text-primary);
+}
+
+.about-stats-card h3 {
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+}
+
+.competency-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.competency-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.competency-list li i {
+    font-size: 1.1rem;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.skills-category-card {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: var(--primary-glow);
+    color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+}
+
+.skills-category-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tags .tag {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.skill-tags .tag:hover {
+    background: var(--primary-glow);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: var(--primary);
+}
+
+/* ==========================================
+   6. Projects & SQL Laboratory Section
+   ========================================== */
+.main-project-card {
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.project-info-header {
+    margin-bottom: 32px;
+}
+
+.project-badge {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+.project-description {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 800px;
+    margin-bottom: 16px;
+}
+
+.project-links .github-link {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-links .github-link:hover {
+    color: var(--accent);
+}
+
+/* SQL Lab Layout */
+.sql-lab-container {
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.sql-lab-header {
+    background: #0f172a;
+    padding: 14px 20px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sql-lab-body {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+}
+
+/* Sidebar tab styling */
+.sql-tabs {
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.sql-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 20px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sql-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-primary);
+}
+
+.sql-tab-btn.active {
+    background: var(--bg-surface);
+    color: var(--primary);
+    border-left: 3px solid var(--primary);
+}
+
+.sql-tab-btn .tab-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Query details and code display */
+.sql-content-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: 24px;
+    gap: 24px;
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+.query-details-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.query-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+/* Code container styling */
+.code-container {
+    background: #000000;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.code-header {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.copy-btn:hover {
+    color: var(--text-primary);
+}
+
+.code-container pre {
+    padding: 16px;
+    overflow-x: auto;
+    margin: 0;
+}
+
+.code-container code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    line-height: 1.5;
+}
+
+/* Dashboard live visualizations */
+.dashboard-output-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.01);
+    overflow: hidden;
+}
+
+.dashboard-output-header {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px 16px;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-output-body {
+    padding: 20px;
+}
+
+.kpi-live-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.kpi-live-item {
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.kpi-live-item .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.kpi-live-item .value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.kpi-live-item .sublabel {
+    font-size: 0.7rem;
+    color: var(--primary);
+    display: block;
+    margin-top: 2px;
+}
+
+.chart-container {
+    height: 250px;
+    position: relative;
+}
+
+/* Secondary projects grid */
+.secondary-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.project-mini-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.proj-icon {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.project-mini-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.project-mini-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tags span {
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   7. Education Timeline
+   ========================================== */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--border-color);
+    top: 0;
+    bottom: 0;
+    left: 40px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 40px;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    left: 33px;
+    top: 24px;
+    border: 4px solid var(--bg-main);
+    z-index: 2;
+}
+
+.timeline-date {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.timeline-content {
+    padding: 30px;
+}
+
+.timeline-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+}
+
+.timeline-content h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.timeline-details {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   8. Contact Section & Footer
+   ========================================== */
+.contact-card {
+    padding: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-intro {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.contact-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.contact-item {
+    padding: 24px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all var(--transition-speed) ease;
+}
+
+.contact-item:hover {
+    background: var(--bg-surface);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.contact-item .icon {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.contact-item .title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.contact-item .value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.app-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 30px 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ==========================================
+   9. Responsive Media Queries (Web View)
+   ========================================== */
+@media (max-width: 992px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 32px;
+        margin-top: calc(var(--header-height) + 20px);
+    }
+    .hero-content {
+        align-items: center;
+    }
+    .hero-tagline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-cta {
+        justify-content: center;
+    }
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .sql-lab-body {
+        grid-template-columns: 1fr;
+    }
+    .sql-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .sql-tab-btn {
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+        padding: 12px 16px;
+        flex-shrink: 0;
+    }
+    .sql-tab-btn.active {
+        border-left: none;
+        border-bottom: 3px solid var(--primary);
+    }
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 0 24px;
+    }
+    .nav-links {
+        display: none; /* Hide standard nav link on small devices */
+    }
+    .section-padding {
+        padding: 60px 16px;
+    }
+    .timeline::after {
+        left: 20px;
+    }
+    .timeline-dot {
+        left: 13px;
+    }
+    .timeline-item {
+        padding-left: 50px;
+    }
+    .about-text-card, .about-stats-card, .skills-category-card, .main-project-card {
+        padding: 24px;
+    }
+    .sql-content-wrapper {
+        padding: 16px;
+    }
+}
+
+/* ==========================================
+   10. Formal Resume Layout & Print Settings
+   ========================================== */
+.print-actions {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 40px auto 20px;
+    padding: 0 24px;
+}
+
+.resume-sheet {
+    background: #ffffff;
+    color: #1e293b;
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 40px 50px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+}
+
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.resume-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+}
+
+.resume-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #059669; /* Primary Green Accent for Resume */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.header-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+.header-contacts span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.resume-divider {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 15px 0;
+}
+
+.resume-section {
+    margin-bottom: 20px;
+}
+
+.resume-section h3 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.resume-section p {
+    font-size: 0.85rem;
+    color: #334155;
+    text-align: justify;
+}
+
+/* Skills table styling in print */
+.skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.skills-table td {
+    padding: 4px 0;
+    vertical-align: top;
+}
+
+.skills-table td.skill-category {
+    width: 180px;
+    color: #0f172a;
+}
+
+.skills-table td:not(.skill-category) {
+    color: #334155;
+}
+
+/* Projects and education list in print */
+.resume-project, .education-item {
+    margin-bottom: 12px;
+}
+
+.project-title-row, .edu-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.project-link-text {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+}
+
+.edu-sub-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #475569;
+    margin-bottom: 4px;
+}
+
+.bullet-list {
+    margin-left: 18px;
+    font-size: 0.8rem;
+    color: #334155;
+}
+
+.bullet-list li {
+    margin-bottom: 3px;
+    padding-left: 2px;
+}
+
+.edu-location, .edu-date, .project-date {
+    font-weight: 500;
+    color: #475569;
+}
+
+/* ==========================================
+   11. PRINT MEDIA OVERRIDES
+   ========================================== */
+@media print {
+    /* Hide everything on the webpage except the print-layout resume sheet */
+    body, html {
+        background: #ffffff !important;
+        color: #000000 !important;
+        width: 100%;
+        height: auto;
+    }
+    
+    .no-print, header, footer, .print-actions, #interactiveMode {
+        display: none !important;
+    }
+
+    #printMode {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .resume-sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    /* Print-specific layout enhancements */
+    .resume-section {
+        page-break-inside: avoid;
+    }
+    
+    .resume-section h3 {
+        border-bottom-color: #94a3b8 !important;
+    }
+}
