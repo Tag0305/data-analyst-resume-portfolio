@@ -27,12 +27,13 @@ export function Navbar({ theme, toggleTheme }: { theme: "light" | "dark"; toggle
         </div>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <nav className="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           <span onClick={() => scrollTo("about")} className="cursor-pointer hover:text-emerald-400 transition-colors">About</span>
+          <span onClick={() => scrollTo("experience")} className="cursor-pointer hover:text-emerald-400 transition-colors">Experience</span>
           <span onClick={() => scrollTo("what-i-do")} className="cursor-pointer hover:text-emerald-400 transition-colors">What I Do</span>
           <span onClick={() => scrollTo("work")} className="cursor-pointer hover:text-emerald-400 transition-colors">Work</span>
-          <span onClick={() => scrollTo("tech-stack")} className="cursor-pointer hover:text-emerald-400 transition-colors">Tech Stack</span>
-          <span onClick={() => scrollTo("career")} className="cursor-pointer hover:text-emerald-400 transition-colors">Career</span>
+          <span onClick={() => scrollTo("skills")} className="cursor-pointer hover:text-emerald-400 transition-colors">Skills</span>
+          <span onClick={() => scrollTo("career")} className="cursor-pointer hover:text-emerald-400 transition-colors">Education</span>
           <span onClick={() => scrollTo("contact")} className="cursor-pointer hover:text-emerald-400 transition-colors">Contact</span>
         </nav>
 
@@ -69,7 +70,7 @@ export function Navbar({ theme, toggleTheme }: { theme: "light" | "dark"; toggle
       <Sheet open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)}>
         <div className="flex flex-col gap-4 py-4 text-sm font-semibold uppercase tracking-wider">
           <span className="text-emerald-400 font-bold text-base mb-4">Navigation</span>
-          {["hero", "about", "what-i-do", "work", "tech-stack", "career", "contact"].map((id) => (
+          {["hero", "about", "experience", "what-i-do", "work", "skills", "career", "contact"].map((id) => (
             <span
               key={id}
               onClick={() => scrollTo(id)}

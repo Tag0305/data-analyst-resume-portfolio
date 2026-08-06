@@ -3,6 +3,7 @@ import { LoadingScreen } from "./components/layout/LoadingScreen"
 import { Navbar } from "./components/portfolio3d/Navbar"
 import { HeroSection } from "./components/hero/HeroSection"
 import { About } from "./components/portfolio3d/About"
+import { ExperienceSection } from "./components/experience/ExperienceSection"
 import { WhatIDo } from "./components/portfolio3d/WhatIDo"
 import { Work } from "./components/portfolio3d/Work"
 import { ProjectPlayground } from "./components/ProjectPlayground"
@@ -46,6 +47,9 @@ export default function App() {
 
           {/* 01. About Me */}
           <About />
+
+          {/* Professional Experience Section */}
+          <ExperienceSection />
 
           {/* 02. What I Do / Disciplines */}
           <WhatIDo />
