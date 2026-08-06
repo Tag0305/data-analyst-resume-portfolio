@@ -44,14 +44,14 @@ export function HeroSection() {
         </nav>
       </FadeIn>
 
-      {/* Hero Name & Restored Avatar Composition (Hand Naturally Resting Near Name) */}
+      {/* Hero Main: Premium Oversized TAGORE Name & Aligned Avatar */}
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 my-auto relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 items-end gap-2 md:gap-0">
+        <div className="hero-main">
           
-          {/* Left Column: TAGORE Name & Title */}
-          <div className="md:col-span-8 space-y-3 text-left z-10">
+          {/* Hero Name Wrapper */}
+          <div className="hero-name-wrap space-y-3">
             <FadeIn delay={0.15} y={30}>
-              <h1 className="hero-name font-black uppercase tracking-tight leading-none text-left">
+              <h1 className="hero-name" data-text="TAGORE">
                 TAGORE
               </h1>
             </FadeIn>
@@ -63,15 +63,15 @@ export function HeroSection() {
             </FadeIn>
           </div>
 
-          {/* Right Column: Restored Avatar Standing Beside Name with Hand Touching Upper Edge */}
-          <div className="md:col-span-4 flex justify-center md:justify-end md:-ml-8 z-20 relative">
+          {/* Hero Avatar Wrapper: Positioned Beside Name with Controlled Overlap */}
+          <div className="hero-avatar-wrap">
             <FadeIn delay={0.4} y={30}>
               <Magnet padding={120} strength={3}>
                 <div className="relative group pointer-events-auto">
                   <img
                     src="/avatar.png"
                     alt="Ronanki Tagore - Full Body Character Avatar"
-                    className="w-[clamp(190px,21vw,360px)] h-auto object-contain object-bottom drop-shadow-[0_15px_30px_rgba(34,197,94,0.25)] pointer-events-auto"
+                    className="hero-avatar pointer-events-auto drop-shadow-[0_15px_35px_rgba(34,197,94,0.25)]"
                   />
                 </div>
               </Magnet>
