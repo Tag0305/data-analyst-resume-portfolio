@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-border: #DCE8DF;
-  --color-input: #DCE8DF;
-  --color-ring: #159A3A;
-  --color-background: #FFFFFF;
-  --color-foreground: #111827;
+  --color-border: rgba(34, 197, 94, 0.22);
+  --color-input: rgba(34, 197, 94, 0.22);
+  --color-ring: #22C55E;
+  --color-background: #030604;
+  --color-foreground: #F4FFF7;
 
-  --color-primary: #159A3A;
-  --color-primary-foreground: #FFFFFF;
+  --color-primary: #22C55E;
+  --color-primary-foreground: #021006;
 
-  --color-secondary: #EAF8EE;
-  --color-secondary-foreground: #08752A;
+  --color-secondary: #071009;
+  --color-secondary-foreground: #39FF88;
 
-  --color-destructive: #dc2626;
-  --color-destructive-foreground: #FFFFFF;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #F4FFF7;
 
-  --color-muted: #F4FBF6;
-  --color-muted-foreground: #53605A;
+  --color-muted: #0B1510;
+  --color-muted-foreground: #A9B8AE;
 
-  --color-accent: #159A3A;
-  --color-accent-foreground: #FFFFFF;
+  --color-accent: #39FF88;
+  --color-accent-foreground: #021006;
 
-  --color-popover: #FFFFFF;
-  --color-popover-foreground: #111827;
+  --color-popover: #0D1812;
+  --color-popover-foreground: #F4FFF7;
 
-  --color-card: #FFFFFF;
-  --color-card-foreground: #111827;
+  --color-card: #0D1812;
+  --color-card-foreground: #F4FFF7;
 
   --radius-lg: 1rem;
   --radius-md: 0.75rem;
@@ -34,37 +34,37 @@
 }
 
 :root {
-  --background: 0 0% 100%; /* #FFFFFF */
-  --foreground: 221 39% 11%; /* #111827 */
+  --background: 135 33% 2%; /* #030604 */
+  --foreground: 135 60% 98%; /* #F4FFF7 */
   
-  --card: 0 0% 100%;
-  --card-foreground: 221 39% 11%;
+  --card: 138 31% 7%; /* #0D1812 */
+  --card-foreground: 135 60% 98%;
   
-  --popover: 0 0% 100%;
-  --popover-foreground: 221 39% 11%;
+  --popover: 138 31% 7%;
+  --popover-foreground: 135 60% 98%;
   
-  --primary: 137 76% 34%; /* #159A3A */
-  --primary-foreground: 0 0% 100%;
+  --primary: 142 71% 45%; /* #22C55E */
+  --primary-foreground: 138 71% 4%; /* #021006 */
   
-  --secondary: 136 50% 95%; /* #EAF8EE */
-  --secondary-foreground: 138 88% 24%; /* #08752A */
+  --secondary: 135 38% 4%; /* #071009 */
+  --secondary-foreground: 142 100% 61%; /* #39FF88 */
   
-  --muted: 137 40% 97%; /* #F4FBF6 */
-  --muted-foreground: 153 7% 35%; /* #53605A */
+  --muted: 138 31% 6%; /* #0B1510 */
+  --muted-foreground: 138 10% 69%; /* #A9B8AE */
   
-  --accent: 137 76% 34%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 142 100% 61%; /* #39FF88 */
+  --accent-foreground: 138 71% 4%;
   
-  --border: 136 17% 89%; /* #DCE8DF */
-  --input: 136 17% 89%;
-  --ring: 137 76% 34%;
+  --border: 142 71% 45%; /* rgba(34, 197, 94, 0.22) */
+  --input: 142 71% 45%;
+  --ring: 142 71% 45%;
   
   --radius: 0.75rem;
 }
 
 html, body, #root {
-  background-color: #FFFFFF;
-  color: #111827;
+  background-color: #030604;
+  color: #F4FFF7;
   font-family: 'Kanit', 'Inter', sans-serif;
   box-sizing: border-box;
   margin: 0;
@@ -76,64 +76,64 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-/* --- HERO DISPLAY NAME STYLING (RESPONSIVE & UN-CROPPED) --- */
+/* --- HERO DISPLAY NAME STYLING (FLUID, UN-CROPPED & SELECTABLE HTML) --- */
 .hero-name {
   display: block;
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
   padding: 0.04em 0;
-  font-size: clamp(4rem, 11vw, 10rem);
+  color: #39FF88;
+  font-size: clamp(3.6rem, 12vw, 10.5rem);
   line-height: 0.9;
   letter-spacing: clamp(-0.07em, -0.35vw, -0.025em);
   white-space: nowrap;
   overflow: visible;
   text-align: center;
   text-wrap: balance;
-  background: linear-gradient(180deg, #08752A 0%, #159A3A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 30px rgba(21, 154, 58, 0.12);
+  text-shadow: 0 0 34px rgba(57, 255, 136, 0.18);
 }
 
 .hero-heading {
-  background: linear-gradient(180deg, #08752A 0%, #159A3A 100%);
+  background: linear-gradient(180deg, #39FF88 0%, #22C55E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Button & Secondary Button Classes */
-.btn-primary-green {
-  background-color: #159A3A;
-  color: #FFFFFF;
+/* Project Card & Media Framing */
+.project-card {
+  background-color: #0D1812;
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  border-radius: 24px;
   transition: all 0.2s ease-out;
-}
-.btn-primary-green:hover {
-  background-color: #08752A;
-  box-shadow: 0 4px 12px rgba(21, 154, 58, 0.25);
 }
 
-.btn-secondary-green {
-  background-color: #FFFFFF;
-  border: 1px solid #159A3A;
-  color: #159A3A;
-  transition: all 0.2s ease-out;
-}
-.btn-secondary-green:hover {
-  background-color: #EAF8EE;
-  color: #08752A;
+.project-card:hover {
+  border-color: rgba(57, 255, 136, 0.42);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-/* Glass & Card styles */
-.white-green-card {
-  background: #FFFFFF;
-  border: 1px solid #DCE8DF;
-  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.03);
-  transition: all 0.2s ease-out;
+.project-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  background: radial-gradient(circle at center, rgba(34, 197, 94, 0.12), transparent 65%), #071009;
 }
-.white-green-card:hover {
-  border-color: #159A3A;
-  box-shadow: 0 8px 24px rgba(21, 154, 58, 0.12);
+
+.project-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s ease-out;
+}
+
+.project-media:hover img {
+  transform: scale(1.03);
 }
 
 /* Reduced Motion Override */
