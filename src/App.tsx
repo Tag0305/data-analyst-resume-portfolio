@@ -26,6 +26,8 @@ import { Dialog } from "./components/ui/dialog"
 import { portfolioData } from "./data/portfolioData"
 import type { Project } from "./data/portfolioData"
 import { ProjectPlayground } from "./components/ProjectPlayground"
+import { Hero3DCanvas } from "./components/3d/Hero3DCanvas"
+import { TechStackBallPit } from "./components/3d/TechStackBallPit"
 
 // Custom inline brand SVGs to replace missing Lucide brand icons in v4
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -299,7 +301,8 @@ export default function App() {
           </div>
 
           {/* E-commerce Mock KPI Visual Widget (shadcn/ui zinc layout) */}
-          <div className="md:col-span-2 flex justify-center md:justify-end">
+          <div className="md:col-span-2 flex flex-col justify-center items-center relative">
+            <Hero3DCanvas />
             <Card tilt={true} className="w-full max-w-[340px] border border-border bg-card shadow-lg rounded-xl overflow-hidden transition-all">
               <CardHeader className="bg-secondary/20 p-4 border-b border-border/50">
                 <div className="flex items-center justify-between">
@@ -405,6 +408,8 @@ export default function App() {
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Skills Toolkit</h2>
             <p className="text-sm text-muted-foreground uppercase tracking-wider font-bold">Languages, Libraries & Concepts</p>
           </div>
+
+          <TechStackBallPit />
 
           <Tabs defaultValue="Programming and Databases" className="w-full">
             <TabsList className="flex flex-wrap h-auto gap-1 border-b border-border bg-transparent p-0 rounded-none w-full justify-start overflow-x-auto">
