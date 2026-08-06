@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0a1d"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg4)"/>
+  
+  <!-- Docker Container Shield Motif -->
+  <rect x="250" y="120" width="300" height="260" rx="16" fill="#1e1b4b" stroke="#a855f7" stroke-width="3"/>
+  <text x="400" y="165" text-anchor="middle" fill="#c084fc" font-family="monospace" font-size="16" font-weight="bold">Docker Container Suite</text>
+  <line x1="270" y1="180" x2="530" y2="180" stroke="#312e81" stroke-width="1.5"/>
+
+  <rect x="280" y="200" width="240" height="40" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="300" y="225" fill="#818cf8" font-family="monospace" font-size="12">Oracle Verifier: PASS [100%]</text>
+
+  <rect x="280" y="255" width="240" height="40" rx="6" fill="#312e81" stroke="#34d399" stroke-width="1"/>
+  <text x="300" y="280" fill="#34d399" font-family="monospace" font-size="12">Deterministic Controls: OK</text>
+
+  <rect x="280" y="310" width="240" height="40" rx="6" fill="#312e81" stroke="#c084fc" stroke-width="1"/>
+  <text x="300" y="335" fill="#c084fc" font-family="monospace" font-size="12">Anti-Hardcoding Checked</text>
+</svg>

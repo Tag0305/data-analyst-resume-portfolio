@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060913"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg3)"/>
+  
+  <!-- Pipeline DAG Nodes -->
+  <g transform="translate(80, 200)">
+    <rect x="0" y="0" width="120" height="80" rx="10" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+    <text x="60" y="35" text-anchor="middle" fill="#06b6d4" font-family="monospace" font-size="12" font-weight="bold">REST API</text>
+    <text x="60" y="55" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">Raw JSON</text>
+  </g>
+
+  <path d="M 200 240 L 260 240" stroke="#06b6d4" stroke-width="3" stroke-dasharray="4 4"/>
+
+  <g transform="translate(260, 200)">
+    <rect x="0" y="0" width="130" height="80" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="65" y="35" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold">SQLite Stage</text>
+    <text x="65" y="55" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">stage_raw_api</text>
+  </g>
+
+  <path d="M 390 240 L 450 240" stroke="#38bdf8" stroke-width="3" stroke-dasharray="4 4"/>
+
+  <g transform="translate(450, 200)">
+    <rect x="0" y="0" width="130" height="80" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="65" y="35" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="12" font-weight="bold">dbt SQL CTE</text>
+    <text x="65" y="55" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">model_market_cap</text>
+  </g>
+
+  <path d="M 580 240 L 640 240" stroke="#10b981" stroke-width="3" stroke-dasharray="4 4"/>
+
+  <g transform="translate(640, 200)">
+    <rect x="0" y="0" width="120" height="80" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="60" y="35" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="12" font-weight="bold">Dashboard</text>
+    <text x="60" y="55" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">Metrics Analytics</text>
+  </g>
+</svg>

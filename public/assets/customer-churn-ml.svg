@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0e17"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg2)"/>
+  
+  <!-- Neural / Decision Tree Nodes -->
+  <circle cx="160" cy="180" r="28" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+  <text x="160" y="185" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="bold">Tenure</text>
+
+  <circle cx="160" cy="320" r="28" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+  <text x="160" y="325" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="bold">Contract</text>
+
+  <!-- Classifier Box -->
+  <rect x="340" y="200" width="160" height="100" rx="16" fill="#1e293b" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="420" y="245" text-anchor="middle" fill="#c084fc" font-family="monospace" font-size="14" font-weight="bold">Random Forest</text>
+  <text x="420" y="270" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="13" font-weight="bold">88.0% Accuracy</text>
+
+  <!-- Connections -->
+  <line x1="188" y1="180" x2="340" y2="230" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="188" y1="320" x2="340" y2="270" stroke="#38bdf8" stroke-width="2"/>
+
+  <!-- Output Nodes -->
+  <circle cx="640" cy="180" r="24" fill="#065f46" stroke="#10b981" stroke-width="3"/>
+  <text x="640" y="185" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="11" font-weight="bold">Retained</text>
+
+  <circle cx="640" cy="320" r="24" fill="#7f1d1d" stroke="#ef4444" stroke-width="3"/>
+  <text x="640" y="325" text-anchor="middle" fill="#fca5a5" font-family="sans-serif" font-size="11" font-weight="bold">Churned</text>
+
+  <line x1="500" y1="235" x2="616" y2="180" stroke="#10b981" stroke-width="2"/>
+  <line x1="500" y1="265" x2="616" y2="320" stroke="#ef4444" stroke-width="2"/>
+</svg>

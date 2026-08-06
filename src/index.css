@@ -76,11 +76,24 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-/* Gradient Hero Heading */
-.hero-heading {
+/* --- HERO DISPLAY NAME STYLING (CORRECTED & FLUID) --- */
+.hero-name {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 0.02em;
+  font-size: clamp(3.2rem, 13.5vw, 11rem);
+  line-height: 0.95;
+  letter-spacing: clamp(-0.06em, -0.4vw, -0.02em);
+  white-space: nowrap;
+  overflow: visible;
+  text-align: center;
+  text-wrap: balance;
   background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 45px rgba(187, 204, 215, 0.2);
 }
 
 /* Contact Button Custom Gradient & Inset Box Shadow */
@@ -97,4 +110,14 @@ html, body, #root {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(215, 226, 234, 0.15);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -20,7 +20,7 @@ const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export function Contact() {
-  const [formData, setFormData] = React.useState({ name: "", email: "", message: "" })
+  const [formData, setFormData] = React.useState({ name: "", email: "", subject: "", message: "" })
   const [submitted, setSubmitted] = React.useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -29,7 +29,7 @@ export function Contact() {
       setSubmitted(true)
       setTimeout(() => {
         setSubmitted(false)
-        setFormData({ name: "", email: "", message: "" })
+        setFormData({ name: "", email: "", subject: "", message: "" })
       }, 4000)
     }
   }
@@ -39,17 +39,17 @@ export function Contact() {
       <div className="space-y-8">
         <div className="space-y-2">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold block">
-            // 05. CONTACT
+            // DIRECT COMMUNICATION
           </span>
           <h2 className="text-3xl sm:text-4xl font-black tracking-tight uppercase text-foreground">
-            Let's <span className="text-emerald-400">Connect</span>
+            Let’s <span className="text-emerald-400">Connect</span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-6">
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              I am actively seeking entry-level roles in <strong className="text-foreground">Data Analytics</strong>, <strong className="text-foreground">Business Intelligence</strong>, or <strong className="text-foreground">SQL Engineering</strong>. Reach out for opportunities or technical inquiries!
+              I am interested in opportunities involving data analysis, SQL development, AI evaluation, benchmark development, quality engineering, and data-driven software systems.
             </p>
 
             <div className="space-y-4">
@@ -63,7 +63,7 @@ export function Contact() {
                 </div>
               </a>
 
-              <div className="flex items-center gap-3 p-3 rounded-lg border border-border/60 bg-card/40">
+              <a href={`tel:${portfolioData.personalInfo.phone.replace(/\s+/g, "")}`} className="flex items-center gap-3 p-3 rounded-lg border border-border/60 bg-card/40 hover:border-emerald-500/40 transition-colors">
                 <div className="w-8 h-8 rounded bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
                   <Phone className="h-4 w-4" />
                 </div>
@@ -71,7 +71,7 @@ export function Contact() {
                   <span className="text-[10px] font-mono uppercase text-muted-foreground block">Phone</span>
                   <span className="text-xs font-bold text-foreground">{portfolioData.personalInfo.phone}</span>
                 </div>
-              </div>
+              </a>
 
               <div className="flex items-center gap-3 p-3 rounded-lg border border-border/60 bg-card/40">
                 <div className="w-8 h-8 rounded bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
@@ -79,21 +79,21 @@ export function Contact() {
                 </div>
                 <div>
                   <span className="text-[10px] font-mono uppercase text-muted-foreground block">Location</span>
-                  <span className="text-xs font-bold text-foreground">{portfolioData.personalInfo.location}</span>
+                  <span className="text-xs font-bold text-foreground">Palasa, Srikakulam, Andhra Pradesh, India</span>
                 </div>
               </div>
             </div>
 
             <div className="flex gap-3">
               <a href={portfolioData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="flex-1">
-                <Button variant="outline" className="w-full gap-2 text-xs font-bold uppercase border-border hover:text-emerald-400">
+                <Button variant="outline" className="w-full gap-2 text-xs font-bold uppercase border-border hover:text-emerald-400 cursor-pointer">
                   <GithubIcon />
                   GitHub
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </Button>
               </a>
               <a href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex-1">
-                <Button variant="outline" className="w-full gap-2 text-xs font-bold uppercase border-border hover:text-emerald-400">
+                <Button variant="outline" className="w-full gap-2 text-xs font-bold uppercase border-border hover:text-emerald-400 cursor-pointer">
                   <LinkedinIcon />
                   LinkedIn
                   <ArrowUpRight className="h-3.5 w-3.5" />
@@ -107,7 +107,7 @@ export function Contact() {
               {submitted ? (
                 <div className="py-12 text-center space-y-3">
                   <CheckCircle2 className="h-10 w-10 text-emerald-400 mx-auto" />
-                  <h3 className="text-lg font-bold text-foreground">Message Sent!</h3>
+                  <h3 className="text-lg font-bold text-foreground">Message Submitted!</h3>
                   <p className="text-xs text-muted-foreground">Thank you for reaching out. I'll respond as soon as possible.</p>
                 </div>
               ) : (
@@ -120,7 +120,7 @@ export function Contact() {
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                        className="w-full h-10 px-3 text-xs bg-background border border-input rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full h-10 px-3 text-xs bg-background border border-input rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-foreground"
                         placeholder="Ronanki Tagore"
                       />
                     </div>
@@ -131,10 +131,21 @@ export function Contact() {
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                        className="w-full h-10 px-3 text-xs bg-background border border-input rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full h-10 px-3 text-xs bg-background border border-input rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-foreground"
                         placeholder="tagoreronanki77@gmail.com"
                       />
                     </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-bold uppercase text-foreground">Subject</label>
+                    <input
+                      type="text"
+                      value={formData.subject}
+                      onChange={(e) => setFormData(prev => ({ ...prev, subject: e.target.value }))}
+                      className="w-full h-10 px-3 text-xs bg-background border border-input rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-foreground"
+                      placeholder="Opportunity Inquiry"
+                    />
                   </div>
 
                   <div className="space-y-1.5">
@@ -144,7 +155,7 @@ export function Contact() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                      className="w-full p-3 text-xs bg-background border border-input rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      className="w-full p-3 text-xs bg-background border border-input rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-foreground"
                       placeholder="Write your message here..."
                     />
                   </div>
