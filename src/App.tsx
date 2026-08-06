@@ -299,7 +299,7 @@ export default function App() {
 
           {/* E-commerce Mock KPI Visual Widget (shadcn/ui zinc layout) */}
           <div className="md:col-span-2 flex justify-center md:justify-end">
-            <Card className="w-full max-w-[340px] border border-border bg-card shadow-lg rounded-xl overflow-hidden">
+            <Card tilt={true} className="w-full max-w-[340px] border border-border bg-card shadow-lg rounded-xl overflow-hidden transition-all">
               <CardHeader className="bg-secondary/20 p-4 border-b border-border/50">
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1.5">
@@ -445,7 +445,7 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {data.projects.map((project) => (
-              <Card key={project.title} className="flex flex-col h-full bg-card/40 border border-border">
+              <Card key={project.title} tilt={true} className="flex flex-col h-full bg-card/40 border border-border transition-all">
                 <CardHeader className="p-5 flex-none">
                   <Badge variant="outline" className="w-fit text-[10px] uppercase font-bold tracking-wider mb-2 text-accent border-accent/20 bg-accent/5">
                     {project.category}
