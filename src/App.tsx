@@ -6,7 +6,7 @@ import { About } from "./components/portfolio3d/About"
 import { WhatIDo } from "./components/portfolio3d/WhatIDo"
 import { Work } from "./components/portfolio3d/Work"
 import { ProjectPlayground } from "./components/ProjectPlayground"
-import { TechStackBallPit } from "./components/3d/TechStackBallPit"
+import { SkillsSection } from "./components/skills/SkillsSection"
 import { Career } from "./components/portfolio3d/Career"
 import { ResumeSection } from "./components/resume/ResumeSection"
 import { Contact } from "./components/portfolio3d/Contact"
@@ -56,18 +56,8 @@ export default function App() {
           {/* Interactive Project Playgrounds (SQL Lab, Churn Simulator, Pipeline DAG) */}
           <ProjectPlayground />
 
-          {/* 3D Physics Tech Stack Ball Pit */}
-          <section id="skills" className="py-12 border-t border-border/60 scroll-mt-20 space-y-6">
-            <div className="space-y-2">
-              <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold block">
-                // INTERACTIVE 3D ORBIT
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight uppercase text-foreground">
-                3D Physics <span className="text-emerald-400">Tech Stack Ball Pit</span>
-              </h2>
-            </div>
-            <TechStackBallPit />
-          </section>
+          {/* Interactive Bento Skills Section */}
+          <SkillsSection />
 
           {/* 04. Education & Certifications Timeline */}
           <Career />
