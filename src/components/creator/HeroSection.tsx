@@ -1,12 +1,43 @@
+import { motion, useReducedMotion, type Variants } from "framer-motion"
 import { FadeIn } from "./FadeIn"
 import { Magnet } from "./Magnet"
 import { ContactButton } from "./ContactButton"
 import { FileText, ArrowDownRight } from "lucide-react"
 
 export function HeroSection() {
+  const shouldReduceMotion = useReducedMotion()
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id)
     if (el) el.scrollIntoView({ behavior: "smooth" })
+  }
+
+  // 2D Entrance & Folded-Arms Pose Settlement Variants (100% 2D)
+  const avatar2DVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      x: 36,
+      y: 8,
+      scale: 0.98
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.65,
+        delay: 0.3
+      }
+    },
+    foldedArmsSettle: {
+      y: [0, -3, 0],
+      rotate: [0, -0.5, 0],
+      transition: {
+        duration: 0.85,
+        delay: 0.95
+      }
+    }
   }
 
   return (
@@ -44,7 +75,7 @@ export function HeroSection() {
         </nav>
       </FadeIn>
 
-      {/* Hero Main: Premium Oversized TAGORE Name & Aligned Avatar */}
+      {/* Hero Main: Premium Oversized TAGORE Name & 2D Animated Avatar */}
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 my-auto relative z-20">
         <div className="hero-main">
           
@@ -63,19 +94,22 @@ export function HeroSection() {
             </FadeIn>
           </div>
 
-          {/* Hero Avatar Wrapper: Positioned Beside Name with Controlled Overlap */}
+          {/* Hero Avatar Wrapper: 2D Entrance & Folded-Arms Pose Settle (Runs Once On Page Open) */}
           <div className="hero-avatar-wrap">
-            <FadeIn delay={0.4} y={30}>
-              <Magnet padding={120} strength={3}>
-                <div className="relative group pointer-events-auto">
-                  <img
-                    src="/avatar.png"
-                    alt="Ronanki Tagore - Full Body Character Avatar"
-                    className="hero-avatar pointer-events-auto drop-shadow-[0_15px_35px_rgba(34,197,94,0.25)]"
-                  />
-                </div>
-              </Magnet>
-            </FadeIn>
+            <Magnet padding={120} strength={3}>
+              <motion.div
+                initial={shouldReduceMotion ? "visible" : "hidden"}
+                animate={shouldReduceMotion ? "visible" : ["visible", "foldedArmsSettle"]}
+                variants={avatar2DVariants}
+                className="relative group pointer-events-auto"
+              >
+                <img
+                  src="/avatar.png"
+                  alt="Illustrated avatar of Ronanki Tagore standing confidently with folded arms"
+                  className="hero-avatar pointer-events-auto drop-shadow-[0_15px_35px_rgba(34,197,94,0.25)]"
+                />
+              </motion.div>
+            </Magnet>
           </div>
 
         </div>
