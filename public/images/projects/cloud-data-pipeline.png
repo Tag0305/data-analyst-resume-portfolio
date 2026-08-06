@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#EEF7F0"/>
+  
+  <g transform="translate(60, 200)">
+    <rect x="0" y="0" width="130" height="90" rx="12" fill="#FFFFFF" stroke="#16803A" stroke-width="2"/>
+    <text x="65" y="40" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="13" font-weight="bold">REST API Ingest</text>
+    <text x="65" y="60" text-anchor="middle" fill="#506158" font-family="monospace" font-size="11">Python Stream</text>
+  </g>
+
+  <line x1="190" y1="245" x2="240" y2="245" stroke="#16803A" stroke-width="3" stroke-dasharray="4 4"/>
+
+  <g transform="translate(240, 200)">
+    <rect x="0" y="0" width="140" height="90" rx="12" fill="#FFFFFF" stroke="#16803A" stroke-width="2"/>
+    <text x="70" y="40" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="13" font-weight="bold">SQLite Warehouse</text>
+    <text x="70" y="60" text-anchor="middle" fill="#506158" font-family="monospace" font-size="11">stage_raw_data</text>
+  </g>
+
+  <line x1="380" y1="245" x2="430" y2="245" stroke="#16803A" stroke-width="3" stroke-dasharray="4 4"/>
+
+  <g transform="translate(430, 200)">
+    <rect x="0" y="0" width="140" height="90" rx="12" fill="#FFFFFF" stroke="#2DBE64" stroke-width="2.5"/>
+    <text x="70" y="40" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="13" font-weight="bold">dbt SQL CTEs</text>
+    <text x="70" y="60" text-anchor="middle" fill="#16803A" font-family="monospace" font-size="11">Transformation</text>
+  </g>
+
+  <line x1="570" y1="245" x2="620" y2="245" stroke="#2DBE64" stroke-width="3" stroke-dasharray="4 4"/>
+
+  <g transform="translate(620, 200)">
+    <rect x="0" y="0" width="130" height="90" rx="12" fill="#DDF3E3" stroke="#16803A" stroke-width="2.5"/>
+    <text x="65" y="40" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="13" font-weight="bold">BI Dashboard</text>
+    <text x="65" y="60" text-anchor="middle" fill="#16803A" font-family="monospace" font-size="11">Live Metrics</text>
+  </g>
+</svg>

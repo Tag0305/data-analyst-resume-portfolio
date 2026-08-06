@@ -3,7 +3,7 @@ import { LoadingScreen } from "./components/layout/LoadingScreen"
 import { HeroSection } from "./components/creator/HeroSection"
 import { MarqueeSection } from "./components/creator/MarqueeSection"
 import { AboutSection } from "./components/creator/AboutSection"
-import { ServicesSection } from "./components/creator/ServicesSection"
+import { CoreExpertiseSection } from "./components/creator/CoreExpertiseSection"
 import { ProjectsSection } from "./components/creator/ProjectsSection"
 import { ProjectPlayground } from "./components/ProjectPlayground"
 import { SkillsSection } from "./components/skills/SkillsSection"
@@ -20,7 +20,7 @@ export default function App() {
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
 
-      <div className="min-h-screen flex flex-col font-sans bg-[#0C0C0C] text-[#D7E2EA] overflow-x-clip selection:bg-emerald-500 selection:text-black">
+      <div className="min-h-screen flex flex-col font-sans bg-[#F7FAF7] text-[#102017] overflow-x-clip selection:bg-[#16803A] selection:text-white">
         {/* 1. HERO SECTION */}
         <HeroSection />
 
@@ -30,10 +30,10 @@ export default function App() {
         {/* 3. ABOUT SECTION */}
         <AboutSection />
 
-        {/* 4. SERVICES SECTION */}
-        <ServicesSection />
+        {/* 4. CORE EXPERTISE SECTION (REPLACES OLD SERVICES BLOCK) */}
+        <CoreExpertiseSection />
 
-        {/* 5. PROJECTS SECTION (Sticky Stacking Cards) */}
+        {/* 5. PROJECTS SECTION (Sticky Stacking Cards with White/Green Frames) */}
         <ProjectsSection />
 
         <main className="container mx-auto max-w-6xl px-4 sm:px-6 py-6 space-y-16 relative z-30">
@@ -52,17 +52,17 @@ export default function App() {
           {/* Official Resume Preview & Download */}
           <ResumeSection />
 
-          {/* Contact Section */}
+          {/* Contact Section (Deep Green Contrast Surface) */}
           <Contact />
         </main>
 
-        {/* Footer */}
-        <footer className="border-t border-[#D7E2EA]/10 py-8 bg-[#0C0C0C] mt-20 relative z-30">
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+        {/* Deep Green Footer */}
+        <footer className="border-t border-[#16803A]/30 py-8 bg-[#0D2416] text-white relative z-30 mt-12">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#DDF3E3]/80">
             <div className="flex items-center gap-2">
-              <span className="bg-emerald-500 text-black font-black text-[10px] px-1.5 py-0.5 rounded">RT</span>
-              <span className="font-bold text-[#D7E2EA]">{portfolioData.personalInfo.name}</span>
-              <span>• 3D Creator & Data Analyst</span>
+              <span className="bg-[#16803A] text-white font-black text-[10px] px-2 py-0.5 rounded font-mono">TR</span>
+              <span className="font-bold text-white">{portfolioData.personalInfo.name}</span>
+              <span>• Data Analyst & AI Evaluation Developer</span>
             </div>
             <div>
               &copy; {new Date().getFullYear()} Ronanki Tagore. All rights reserved.

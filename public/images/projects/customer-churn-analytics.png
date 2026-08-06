@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#EEF7F0"/>
+  
+  <rect x="100" y="150" width="160" height="200" rx="16" fill="#FFFFFF" stroke="#16803A" stroke-width="2"/>
+  <text x="180" y="190" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="15" font-weight="bold">1,000 Customers</text>
+  <text x="180" y="220" text-anchor="middle" fill="#506158" font-family="monospace" font-size="12">Dataset Scaling</text>
+  <text x="180" y="240" text-anchor="middle" fill="#506158" font-family="monospace" font-size="12">Feature Eng.</text>
+
+  <rect x="330" y="170" width="160" height="160" rx="16" fill="#FFFFFF" stroke="#2DBE64" stroke-width="3"/>
+  <text x="410" y="215" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="14" font-weight="bold">Random Forest</text>
+  <text x="410" y="245" text-anchor="middle" fill="#16803A" font-family="sans-serif" font-size="20" font-weight="extrabold">88.0%</text>
+  <text x="410" y="270" text-anchor="middle" fill="#506158" font-family="sans-serif" font-size="12">Model Accuracy</text>
+
+  <line x1="260" y1="250" x2="330" y2="250" stroke="#16803A" stroke-width="3"/>
+
+  <rect x="550" y="130" width="170" height="90" rx="12" fill="#DDF3E3" stroke="#16803A" stroke-width="2"/>
+  <text x="635" y="165" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="14" font-weight="bold">Retained Group</text>
+
+  <rect x="550" y="280" width="170" height="90" rx="12" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+  <text x="635" y="315" text-anchor="middle" fill="#991B1B" font-family="sans-serif" font-size="14" font-weight="bold">Churn Risk Group</text>
+
+  <path d="M 490 230 L 550 175" stroke="#16803A" stroke-width="2.5"/>
+  <path d="M 490 270 L 550 325" stroke="#EF4444" stroke-width="2.5"/>
+</svg>

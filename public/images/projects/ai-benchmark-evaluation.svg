@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#EEF7F0"/>
+  
+  <rect x="230" y="110" width="340" height="280" rx="20" fill="#FFFFFF" stroke="#16803A" stroke-width="3"/>
+  <text x="400" y="155" text-anchor="middle" fill="#0B4F2A" font-family="sans-serif" font-size="17" font-weight="extrabold">Docker Container Suite</text>
+  <line x1="250" y1="175" x2="550" y2="175" stroke="#D7E5DA" stroke-width="2"/>
+
+  <rect x="260" y="195" width="280" height="45" rx="8" fill="#EEF7F0" stroke="#16803A" stroke-width="1.5"/>
+  <text x="280" y="222" fill="#0B4F2A" font-family="monospace" font-size="13" font-weight="bold">Oracle Verifier: PASS [100%]</text>
+
+  <rect x="260" y="255" width="280" height="45" rx="8" fill="#DDF3E3" stroke="#2DBE64" stroke-width="1.5"/>
+  <text x="280" y="282" fill="#0B4F2A" font-family="monospace" font-size="13" font-weight="bold">Deterministic Controls: OK</text>
+
+  <rect x="260" y="315" width="280" height="45" rx="8" fill="#EEF7F0" stroke="#16803A" stroke-width="1.5"/>
+  <text x="280" y="342" fill="#0B4F2A" font-family="monospace" font-size="13" font-weight="bold">Anti-Hardcoding Checked</text>
+</svg>
