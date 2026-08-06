@@ -76,7 +76,7 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-/* --- HERO DISPLAY NAME STYLING (BIGGER, PREMIUM & AESTHETIC) --- */
+/* --- HERO DISPLAY NAME STYLING --- */
 .hero-name {
   position: relative;
   display: inline-block;
@@ -177,7 +177,7 @@ html, body, #root {
   -webkit-text-fill-color: transparent;
 }
 
-/* Project Card & Media Framing */
+/* --- FEATURED PROJECTS MEDIA CONTAINER --- */
 .project-card {
   background-color: #0D1812;
   border: 1px solid rgba(34, 197, 94, 0.22);
@@ -191,13 +191,12 @@ html, body, #root {
 }
 
 .project-media {
-  position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 18px;
-  border: 1px solid rgba(34, 197, 94, 0.28);
-  background: radial-gradient(circle at center, rgba(34, 197, 94, 0.12), transparent 65%), #071009;
+  border-radius: 16px;
+  background: #020503;
+  border: 1px solid rgba(34, 197, 94, 0.24);
 }
 
 .project-media img {
@@ -206,11 +205,12 @@ html, body, #root {
   height: 100%;
   object-fit: contain;
   object-position: center;
+  background: #020503;
   transition: transform 0.3s ease-out;
 }
 
 .project-media:hover img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Reduced Motion Override */

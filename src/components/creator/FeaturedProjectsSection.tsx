@@ -8,8 +8,8 @@ const featuredProjects = [
     technology: ["Python", "Go", "Java", "Bash", "Docker", "Linux", "Git"],
     description: "Designed offline, self-contained benchmark tasks with public technical contracts, oracle solutions, automated verification, negative controls, edge-case coverage, deterministic reruns, and reproducible packaging.",
     result: "Built reproducible verification systems ensuring deterministic evaluation results and state consistency.",
-    image: "/images/projects/ai-benchmark-evaluation.png",
-    alt: "AI benchmark evaluation dashboard showing deterministic testing workflow, containerized execution environment, oracle verification, and validation controls.",
+    image: "/images/projects/ai_benchmark_evaluation_dashboard.png",
+    alt: "AI benchmark evaluation and deterministic verification dashboard",
     githubUrl: "https://github.com/Tag0305"
   },
   {
@@ -18,8 +18,8 @@ const featuredProjects = [
     technology: ["PostgreSQL", "SQL"],
     description: "Designed and loaded a multi-table PostgreSQL database simulating e-commerce transaction histories with custom constraints. Optimized analytical queries using CTEs, LEAD, LAG, DENSE_RANK, window functions, and self-joins to study monthly growth and cohort retention.",
     result: "Identified product categories with more than 40% repeat-purchase rates to support business KPI decisions.",
-    image: "/images/projects/sql-ecommerce-analytics.png",
-    alt: "Relational database schema and SQL e-commerce business analytics dashboard showing tables, orders, products, cohort retention, and analytical charts.",
+    image: "/images/projects/sql_e_commerce_analytics_dashboard.png",
+    alt: "SQL e-commerce analytics dashboard with data tables, charts, database schema, and retention analysis",
     githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
   },
   {
@@ -28,8 +28,8 @@ const featuredProjects = [
     technology: ["Python", "Pandas", "Scikit-Learn", "Seaborn"],
     description: "Performed exploratory data analysis on a 1,000-customer dataset, engineered and scaled features, and compared Logistic Regression and Random Forest models.",
     result: "Achieved 88.0% prediction accuracy and found contract terms and subscription tenure to be strong retention indicators.",
-    image: "/images/projects/customer-churn-analytics.png",
-    alt: "Machine learning customer churn predictive modeling dashboard showing dataset distribution, Random Forest accuracy comparison, feature importance, and customer retention indicators.",
+    image: "/images/projects/customer_churn_analytics_dashboard.png",
+    alt: "Customer churn analytics and predictive modeling dashboard with charts and model evaluation panels",
     githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
   },
   {
@@ -38,8 +38,8 @@ const featuredProjects = [
     technology: ["Python", "SQLite", "SQL", "BigQuery-style workflow"],
     description: "Built an automated Python pipeline to ingest data through an API, store it in a warehouse-style setup, transform it with SQL logic, and generate reporting outputs.",
     result: "Developed an automated reporting workflow to present current data metrics.",
-    image: "/images/projects/cloud-data-pipeline.png",
-    alt: "End-to-end cloud data pipeline engineering architecture showing REST API ingestion, SQLite warehouse staging, dbt SQL transformations, and automated reporting workflow.",
+    image: "/images/projects/cloud_data_pipeline_dashboard.png",
+    alt: "End-to-end cloud data pipeline monitoring dashboard with ingestion, transformation, storage, and reporting stages",
     githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
   }
 ]
@@ -69,16 +69,15 @@ export function FeaturedProjectsSection() {
             <FadeIn key={project.num} delay={index * 0.1} y={30}>
               <div className="project-card h-full p-6 flex flex-col justify-between space-y-5 rounded-3xl bg-[#0D1812] border border-[#22C55E]/25 hover:border-[#39FF88]/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] transition-all">
                 
-                {/* Project Media Container - 16:10 Aspect Ratio, Clean Theme Framing */}
-                <div className="project-media rounded-2xl overflow-hidden aspect-[16/10] bg-[#071009] border border-[#22C55E]/25 p-2 flex items-center justify-center">
+                {/* Project Media Container - 16:9 Aspect Ratio, object-fit contain, #020503 background */}
+                <div className="project-media">
                   <img
                     src={project.image}
                     alt={project.alt}
                     width={1600}
-                    height={1000}
+                    height={900}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-contain rounded-xl"
                   />
                 </div>
 
