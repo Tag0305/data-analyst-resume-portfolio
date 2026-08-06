@@ -25,6 +25,7 @@ import { Separator } from "./components/ui/separator"
 import { Dialog } from "./components/ui/dialog"
 import { portfolioData } from "./data/portfolioData"
 import type { Project } from "./data/portfolioData"
+import { ProjectPlayground } from "./components/ProjectPlayground"
 
 // Custom inline brand SVGs to replace missing Lucide brand icons in v4
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -565,6 +566,9 @@ export default function App() {
             </div>
           )}
         </Dialog>
+
+        {/* Interactive Playgrounds Dashboard */}
+        <ProjectPlayground />
 
         {/* Education Timeline */}
         <section id="education" className="space-y-6 scroll-mt-20">
