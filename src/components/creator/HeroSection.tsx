@@ -1,7 +1,7 @@
 import { FadeIn } from "./FadeIn"
 import { Magnet } from "./Magnet"
 import { ContactButton } from "./ContactButton"
-import { FileText, ArrowDownRight, Terminal } from "lucide-react"
+import { FileText, ArrowDownRight } from "lucide-react"
 
 export function HeroSection() {
   const scrollTo = (id: string) => {
@@ -44,58 +44,41 @@ export function HeroSection() {
         </nav>
       </FadeIn>
 
-      {/* Dominant Display Name: TAGORE */}
-      <div className="w-full max-w-full px-2 sm:px-6 my-4 text-center z-10 relative">
-        <FadeIn delay={0.15} y={30}>
-          <h1 className="hero-name font-black uppercase tracking-tight leading-none">
-            TAGORE
-          </h1>
-        </FadeIn>
+      {/* Hero Name & Restored Avatar Composition (Hand Naturally Resting Near Name) */}
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 my-auto relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 items-end gap-2 md:gap-0">
+          
+          {/* Left Column: TAGORE Name & Title */}
+          <div className="md:col-span-8 space-y-3 text-left z-10">
+            <FadeIn delay={0.15} y={30}>
+              <h1 className="hero-name font-black uppercase tracking-tight leading-none text-left">
+                TAGORE
+              </h1>
+            </FadeIn>
 
-        <FadeIn delay={0.25} y={20}>
-          <p className="text-xs sm:text-sm md:text-base font-mono font-bold uppercase tracking-widest text-[#39FF88] mt-2">
-            Data Analyst • SQL Developer • AI Benchmark &amp; Evaluation Developer
-          </p>
-        </FadeIn>
-      </div>
+            <FadeIn delay={0.25} y={20}>
+              <p className="text-xs sm:text-sm md:text-base font-mono font-bold uppercase tracking-widest text-[#39FF88]">
+                Data Analyst • SQL Developer • AI Benchmark &amp; Evaluation Developer
+              </p>
+            </FadeIn>
+          </div>
 
-      {/* Central Interactive Technical Command Module (NO AVATARS / NO HUMANS) */}
-      <div className="relative z-20 w-full max-w-xl mx-auto px-4 my-2">
-        <FadeIn delay={0.4} y={20}>
-          <Magnet padding={120} strength={4}>
-            <div className="p-5 rounded-3xl bg-[#071009] border border-[#22C55E]/30 shadow-2xl space-y-3 font-mono">
-              <div className="flex items-center justify-between border-b border-[#22C55E]/20 pb-2">
-                <div className="flex items-center gap-2">
-                  <Terminal className="h-4 w-4 text-[#39FF88]" />
-                  <span className="text-xs font-bold text-[#F4FFF7]">DATA &amp; EVALUATION ENGINE</span>
+          {/* Right Column: Restored Avatar Standing Beside Name with Hand Touching Upper Edge */}
+          <div className="md:col-span-4 flex justify-center md:justify-end md:-ml-8 z-20 relative">
+            <FadeIn delay={0.4} y={30}>
+              <Magnet padding={120} strength={3}>
+                <div className="relative group pointer-events-auto">
+                  <img
+                    src="/avatar.png"
+                    alt="Ronanki Tagore - Full Body Character Avatar"
+                    className="w-[clamp(190px,21vw,360px)] h-auto object-contain object-bottom drop-shadow-[0_15px_30px_rgba(34,197,94,0.25)] pointer-events-auto"
+                  />
                 </div>
-                <div className="flex items-center gap-1.5 text-[10px] text-[#39FF88]">
-                  <span className="w-2 h-2 rounded-full bg-[#39FF88] animate-ping" />
-                  <span>DETERMINISTIC VERIFIED</span>
-                </div>
-              </div>
+              </Magnet>
+            </FadeIn>
+          </div>
 
-              <div className="grid grid-cols-2 gap-2 text-[10px]">
-                <div className="p-2 rounded-xl bg-[#09130D] border border-[#22C55E]/20">
-                  <span className="text-[#748078] block">Dataset Analyzed</span>
-                  <span className="text-[#39FF88] font-bold text-xs">1,000 Customers</span>
-                </div>
-                <div className="p-2 rounded-xl bg-[#09130D] border border-[#22C55E]/20">
-                  <span className="text-[#748078] block">Predictive Accuracy</span>
-                  <span className="text-[#39FF88] font-bold text-xs">88.0% Random Forest</span>
-                </div>
-                <div className="p-2 rounded-xl bg-[#09130D] border border-[#22C55E]/20">
-                  <span className="text-[#748078] block">SQL Repeat Rate</span>
-                  <span className="text-[#39FF88] font-bold text-xs">40%+ Categories</span>
-                </div>
-                <div className="p-2 rounded-xl bg-[#09130D] border border-[#22C55E]/20">
-                  <span className="text-[#748078] block">AI Benchmarking</span>
-                  <span className="text-[#39FF88] font-bold text-xs">July 2026 – Present</span>
-                </div>
-              </div>
-            </div>
-          </Magnet>
-        </FadeIn>
+        </div>
       </div>
 
       {/* Bottom Bar: Introductory Copy & Green Accent Buttons */}
