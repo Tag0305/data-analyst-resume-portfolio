@@ -1,6 +1,7 @@
 import * as React from "react"
 import { LoadingScreen } from "./components/layout/LoadingScreen"
 import { HeroSection } from "./components/creator/HeroSection"
+import { MarqueeSection } from "./components/creator/MarqueeSection"
 import { AboutSection } from "./components/creator/AboutSection"
 import { FeaturedProjectsSection } from "./components/creator/FeaturedProjectsSection"
 import { CoreExpertiseSection } from "./components/creator/CoreExpertiseSection"
@@ -24,16 +25,19 @@ export default function App() {
         {/* 1. HERO SECTION */}
         <HeroSection />
 
-        {/* 2. ABOUT SECTION */}
+        {/* 2. INTERACTIVE 8-BLOCK PORTFOLIO SHOWCASE GALLERY (PRESERVED TEMPLATE MASONRY) */}
+        <MarqueeSection />
+
+        {/* 3. ABOUT SECTION */}
         <AboutSection />
 
-        {/* 3. FEATURED PROJECTS SECTION (REPLACES UNRELATED MARQUEE/GALLERY IMAGES) */}
+        {/* 4. FEATURED PROJECTS SECTION (2x2 Grid Case Studies) */}
         <FeaturedProjectsSection />
 
-        {/* 4. CORE EXPERTISE SECTION */}
+        {/* 5. CORE EXPERTISE SECTION */}
         <CoreExpertiseSection />
 
-        {/* 5. DETAILED PROJECTS SECTION (Sticky Stacking Cards) */}
+        {/* 6. DETAILED PROJECTS SECTION (Sticky Stacking Cards) */}
         <ProjectsSection />
 
         <main className="container mx-auto max-w-6xl px-4 sm:px-6 py-6 space-y-16 relative z-30">
@@ -58,7 +62,7 @@ export default function App() {
 
         {/* Footer */}
         <footer className="border-t border-[#22C55E]/30 py-8 bg-[#071009] text-[#F4FFF7] relative z-30 mt-12">
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#A9B8AE]">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#A7B5AB]">
             <div className="flex items-center gap-2">
               <span className="bg-[#22C55E] text-[#021006] font-black text-[10px] px-2 py-0.5 rounded font-mono">TR</span>
               <span className="font-bold text-[#F4FFF7]">{portfolioData.personalInfo.name}</span>
