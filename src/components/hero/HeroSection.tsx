@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ArrowDownRight, FileText, MapPin, Mail } from "lucide-react"
+import { ArrowDownRight, FileText, MapPin, Mail, Sparkles, Terminal } from "lucide-react"
 import { Button } from "../ui/button"
 import { Badge } from "../ui/badge"
 import { portfolioData } from "../../data/portfolioData"
@@ -37,71 +37,88 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="relative pt-6 pb-12 sm:pb-20 overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        {/* Left Column: Hero Content & CTA */}
+      {/* Background Cyber Ambient Glow & Grid overlay */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+      <div className="absolute -left-16 -top-16 w-96 h-96 bg-emerald-500/15 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        {/* Left Column: Hero Content & Aesthetic Headings */}
         <div className="lg:col-span-7 space-y-6">
+          {/* Top Status & Location Badges */}
           <div className="flex flex-wrap gap-2.5 items-center">
-            <Badge variant="outline" className="text-xs bg-emerald-500/10 border-emerald-500/30 text-emerald-400 py-1 px-3 rounded-full font-bold uppercase tracking-wider">
+            <Badge variant="outline" className="text-xs bg-emerald-500/10 border-emerald-500/40 text-emerald-400 py-1 px-3.5 rounded-full font-mono font-bold uppercase tracking-wider shadow-sm shadow-emerald-500/20">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-2 inline-block" />
               Open to Entry-Level Opportunities
             </Badge>
-            <Badge variant="outline" className="text-xs py-1 px-3 rounded-full border-border text-muted-foreground">
+            <Badge variant="outline" className="text-xs py-1 px-3.5 rounded-full border-border/80 bg-secondary/30 text-muted-foreground font-medium">
               <MapPin className="h-3 w-3 mr-1 text-emerald-400" />
               {portfolioData.personalInfo.location}
             </Badge>
           </div>
 
-          <div className="space-y-2">
-            <span className="text-sm font-mono uppercase tracking-widest text-emerald-400 block font-semibold">
-              Hello, I’m
-            </span>
-            <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-foreground uppercase leading-none">
-              {portfolioData.personalInfo.name}
+          {/* Aesthetic Headline & Subheading */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">
+              <Terminal className="h-3.5 w-3.5 text-emerald-400" />
+              <span>// SYSTEM ONLINE • 3D DATA PORTFOLIO</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-foreground uppercase leading-none glow-title">
+              Hello, I’m <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                {portfolioData.personalInfo.name}
+              </span>
             </h1>
-            <div className="h-8 flex items-center">
-              <span className="text-lg sm:text-xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
-                &gt; {portfolioData.personalInfo.roles[roleIndex]}
+
+            {/* Dynamic Role Switcher Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/5 backdrop-blur-md">
+              <Sparkles className="h-4 w-4 text-emerald-400 animate-spin" style={{ animationDuration: "6s" }} />
+              <span className="text-sm sm:text-base font-mono font-bold text-emerald-300">
+                {portfolioData.personalInfo.roles[roleIndex]}
               </span>
             </div>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-xl leading-relaxed pt-2">
-              I transform raw data into meaningful insights using SQL, Python, predictive modelling and business intelligence tools.
+
+            {/* Value Proposition Statement */}
+            <p className="text-sm sm:text-base text-muted-foreground max-w-xl leading-relaxed pt-1">
+              I transform raw data into meaningful insights using <strong className="text-foreground border-b border-emerald-500/40">SQL</strong>, <strong className="text-foreground border-b border-emerald-500/40">Python</strong>, <strong className="text-foreground border-b border-emerald-500/40">predictive modelling</strong>, and <strong className="text-foreground border-b border-emerald-500/40">business intelligence tools</strong>.
             </p>
           </div>
 
+          {/* Primary CTA Buttons */}
           <div className="flex flex-wrap gap-4 pt-2">
             <Button 
               onClick={() => scrollTo("projects")}
-              className="gap-2 bg-emerald-500 hover:bg-emerald-600 text-black font-bold uppercase tracking-wider text-xs px-6 py-5 cursor-pointer shadow-lg shadow-emerald-500/20"
+              className="gap-2 bg-emerald-500 hover:bg-emerald-600 text-black font-bold uppercase tracking-wider text-xs px-6 py-5 cursor-pointer shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02]"
             >
               Explore My Work
               <ArrowDownRight className="h-4 w-4" />
             </Button>
 
             <a href="/resume.pdf" download="Ronanki_Tagore_Data_Analyst.pdf">
-              <Button variant="outline" className="gap-2 border-border hover:bg-secondary text-foreground text-xs font-bold uppercase tracking-wider px-6 py-5 cursor-pointer">
+              <Button variant="outline" className="gap-2 border-border/80 hover:bg-secondary text-foreground text-xs font-bold uppercase tracking-wider px-6 py-5 cursor-pointer hover:border-emerald-500/40 transition-all">
                 <FileText className="h-4 w-4 text-emerald-400" />
                 Download Resume
               </Button>
             </a>
           </div>
 
-          {/* Social Quick Links */}
-          <div className="flex items-center gap-3 pt-2">
+          {/* Social Links Bar */}
+          <div className="flex items-center gap-3 pt-1">
             <a href={portfolioData.personalInfo.github} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" className="gap-2 text-xs font-mono border-border hover:text-emerald-400 cursor-pointer">
+              <Button variant="outline" size="sm" className="gap-2 text-xs font-mono border-border/80 hover:text-emerald-400 hover:border-emerald-500/40 cursor-pointer">
                 <GithubIcon />
                 GitHub
               </Button>
             </a>
             <a href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" className="gap-2 text-xs font-mono border-border hover:text-emerald-400 cursor-pointer">
+              <Button variant="outline" size="sm" className="gap-2 text-xs font-mono border-border/80 hover:text-emerald-400 hover:border-emerald-500/40 cursor-pointer">
                 <LinkedinIcon />
                 LinkedIn
               </Button>
             </a>
             <a href={`mailto:${portfolioData.personalInfo.email}`}>
-              <Button variant="outline" size="sm" className="gap-2 text-xs font-mono border-border hover:text-emerald-400 cursor-pointer">
-                <Mail className="h-3.5 w-3.5" />
+              <Button variant="outline" size="sm" className="gap-2 text-xs font-mono border-border/80 hover:text-emerald-400 hover:border-emerald-500/40 cursor-pointer">
+                <Mail className="h-3.5 w-3.5 text-emerald-400" />
                 Email
               </Button>
             </a>
