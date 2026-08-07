@@ -10,7 +10,8 @@ const featuredProjects = [
     result: "Built reproducible verification systems ensuring deterministic evaluation results and state consistency.",
     image: "/images/projects/ai_benchmark_evaluation_dashboard.png",
     alt: "AI benchmark evaluation and deterministic verification dashboard",
-    githubUrl: "https://github.com/Tag0305"
+    isPrivate: true,
+    githubUrl: ""
   },
   {
     num: "02",
@@ -20,7 +21,8 @@ const featuredProjects = [
     result: "Identified product categories with more than 40% repeat-purchase rates to support business KPI decisions.",
     image: "/images/projects/sql_e_commerce_analytics_dashboard.png",
     alt: "SQL e-commerce analytics dashboard with data tables, charts, database schema, and retention analysis",
-    githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
+    isPrivate: false,
+    githubUrl: "https://github.com/Tag0305/sql-ecommerce-analytics"
   },
   {
     num: "03",
@@ -30,7 +32,8 @@ const featuredProjects = [
     result: "Achieved 88.0% prediction accuracy and found contract terms and subscription tenure to be strong retention indicators.",
     image: "/images/projects/customer_churn_analytics_dashboard.png",
     alt: "Customer churn analytics and predictive modeling dashboard with charts and model evaluation panels",
-    githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
+    isPrivate: false,
+    githubUrl: "https://github.com/Tag0305/python-customer-churn-prediction"
   },
   {
     num: "04",
@@ -40,7 +43,8 @@ const featuredProjects = [
     result: "Developed an automated reporting workflow to present current data metrics.",
     image: "/images/projects/cloud_data_pipeline_dashboard.png",
     alt: "End-to-end cloud data pipeline monitoring dashboard with ingestion, transformation, storage, and reporting stages",
-    githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
+    isPrivate: false,
+    githubUrl: "https://github.com/Tag0305/cloud-data-pipeline-simulation"
   }
 ]
 
@@ -87,15 +91,24 @@ export function FeaturedProjectsSection() {
                     <span className="text-xs font-mono font-bold text-[#39FF88]">
                       {project.num} // PROJECT
                     </span>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-[#39FF88] hover:text-white transition-colors"
-                    >
-                      <span>GitHub</span>
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
+                    {project.isPrivate ? (
+                      <span
+                        aria-disabled="true"
+                        className="inline-flex items-center gap-1 text-xs font-mono text-[#86EFAC]/70 bg-[#071009] px-2.5 py-0.5 rounded-full border border-[#22C55E]/30 cursor-default select-none"
+                      >
+                        Private Project
+                      </span>
+                    ) : (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-mono text-[#39FF88] hover:text-white transition-colors"
+                      >
+                        <span>GitHub</span>
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
                   </div>
 
                   <h3 className="text-xl font-bold uppercase tracking-tight text-[#F4FFF7]">
