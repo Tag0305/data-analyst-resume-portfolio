@@ -1,7 +1,7 @@
 import * as React from "react"
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
 import { ContactButton } from "./ContactButton"
-import { BarChart3, Cpu, CheckCircle2 } from "lucide-react"
+import { CheckCircle2 } from "lucide-react"
 
 export function AboutSection() {
   const containerRef = React.useRef<HTMLDivElement>(null)
@@ -12,36 +12,30 @@ export function AboutSection() {
     offset: ["start start", "end end"]
   })
 
-  // Desktop Scroll Reveal Threshold Transforms (0 to 1 progress mapping)
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.12], [0, 1])
-  const headingY = useTransform(scrollYProgress, [0, 0.12], [28, 0])
+  // Desktop Scroll Reveal Threshold Transforms
+  const headingOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 1])
+  const headingY = useTransform(scrollYProgress, [0, 0.15], [28, 0])
 
-  const p1Opacity = useTransform(scrollYProgress, [0.12, 0.35], [0.3, 1])
-  const p1Y = useTransform(scrollYProgress, [0.12, 0.35], [20, 0])
+  const p1Opacity = useTransform(scrollYProgress, [0.15, 0.4], [0.3, 1])
+  const p1Y = useTransform(scrollYProgress, [0.15, 0.4], [20, 0])
 
-  const p2Opacity = useTransform(scrollYProgress, [0.35, 0.58], [0.3, 1])
-  const p2Y = useTransform(scrollYProgress, [0.35, 0.58], [20, 0])
+  const p2Opacity = useTransform(scrollYProgress, [0.4, 0.65], [0.3, 1])
+  const p2Y = useTransform(scrollYProgress, [0.4, 0.65], [20, 0])
 
-  const p3Opacity = useTransform(scrollYProgress, [0.58, 0.72], [0.3, 1])
-  const p3Y = useTransform(scrollYProgress, [0.58, 0.72], [20, 0])
+  const p3Opacity = useTransform(scrollYProgress, [0.65, 0.82], [0.3, 1])
+  const p3Y = useTransform(scrollYProgress, [0.65, 0.82], [20, 0])
 
-  const block1Opacity = useTransform(scrollYProgress, [0.72, 0.82], [0, 1])
-  const block1Y = useTransform(scrollYProgress, [0.72, 0.82], [24, 0])
-
-  const block2Opacity = useTransform(scrollYProgress, [0.82, 0.91], [0, 1])
-  const block2Y = useTransform(scrollYProgress, [0.82, 0.91], [24, 0])
-
-  const block3Opacity = useTransform(scrollYProgress, [0.91, 1.0], [0, 1])
-  const block3Y = useTransform(scrollYProgress, [0.91, 1.0], [24, 0])
+  const blockOpacity = useTransform(scrollYProgress, [0.82, 1.0], [0, 1])
+  const blockY = useTransform(scrollYProgress, [0.82, 1.0], [24, 0])
 
   // Progress Stage Counter text
-  const currentStage = useTransform(scrollYProgress, [0, 0.35, 0.72, 0.9], ["01 — Introduction", "02 — Technical Focus", "03 — Working Values", "04 — Expertise"])
+  const currentStage = useTransform(scrollYProgress, [0, 0.4, 0.72, 0.9], ["01 — Introduction", "02 — Technical Focus", "03 — Working Values", "04 — Approach"])
 
   return (
     <section ref={containerRef} id="about" className="relative bg-[#020503] text-[#F4FFF7] border-t border-b border-[#22C55E]/20">
       
-      {/* Desktop Sticky Scroll Presentation (220vh outer container, 100vh inner sticky container) */}
-      <div className="hidden md:block min-h-[200vh] relative">
+      {/* Desktop Sticky Scroll Presentation (180vh outer container, 100vh inner sticky container) */}
+      <div className="hidden md:block min-h-[180vh] relative">
         <div className="sticky top-0 min-h-screen flex flex-col justify-center px-6 md:px-12 py-16 overflow-hidden">
           
           {/* Subtle Aesthetic Data Grid & Progress Indicator */}
@@ -74,7 +68,7 @@ export function AboutSection() {
               </h2>
             </motion.div>
 
-            {/* Content Grid: Progressive Text Reveal (Left) + Staggered Cards (Right) */}
+            {/* Content Grid: Progressive Text Reveal (Left) + Retained Working Approach Block (Right) */}
             <div className="grid grid-cols-12 gap-8 items-start">
               
               {/* Paragraphs */}
@@ -96,57 +90,22 @@ export function AboutSection() {
                 </div>
               </div>
 
-              {/* 3 Information Cards */}
+              {/* Retained Working Approach Block (Aligned Cleanly) */}
               <div className="col-span-5 space-y-3.5">
-                
-                {/* Block 1 */}
-                <motion.div style={shouldReduceMotion ? {} : { opacity: block1Opacity, y: block1Y }}>
-                  <div className="p-4 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-1.5 hover:border-[#39FF88]/40 transition-colors">
-                    <div className="flex items-center justify-between text-[#39FF88] font-bold text-sm">
-                      <div className="flex items-center gap-2">
-                        <BarChart3 className="h-4 w-4 text-[#22C55E]" />
-                        <h3>Data &amp; Analytics</h3>
-                      </div>
-                      <span className="text-[10px] font-mono text-[#748078]">01</span>
-                    </div>
-                    <p className="text-xs text-[#A8B5AC] leading-relaxed">
-                      SQL analysis, business insights, data cleaning, statistical analysis, cohort retention, dashboards, and reporting.
-                    </p>
-                  </div>
-                </motion.div>
-
-                {/* Block 2 */}
-                <motion.div style={shouldReduceMotion ? {} : { opacity: block2Opacity, y: block2Y }}>
-                  <div className="p-4 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-1.5 hover:border-[#39FF88]/40 transition-colors">
-                    <div className="flex items-center justify-between text-[#39FF88] font-bold text-sm">
-                      <div className="flex items-center gap-2">
-                        <Cpu className="h-4 w-4 text-[#22C55E]" />
-                        <h3>Engineering &amp; Evaluation</h3>
-                      </div>
-                      <span className="text-[10px] font-mono text-[#748078]">02</span>
-                    </div>
-                    <p className="text-xs text-[#A8B5AC] leading-relaxed">
-                      Python, Docker, Linux, automated testing, oracle verification, deterministic systems, and AI coding-agent evaluation.
-                    </p>
-                  </div>
-                </motion.div>
-
-                {/* Block 3 */}
-                <motion.div style={shouldReduceMotion ? {} : { opacity: block3Opacity, y: block3Y }}>
-                  <div className="p-4 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-1.5 hover:border-[#39FF88]/40 transition-colors">
-                    <div className="flex items-center justify-between text-[#39FF88] font-bold text-sm">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-[#22C55E]" />
+                <motion.div style={shouldReduceMotion ? {} : { opacity: blockOpacity, y: blockY }}>
+                  <div className="p-6 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-2 hover:border-[#39FF88]/40 transition-colors shadow-xl">
+                    <div className="flex items-center justify-between text-[#39FF88] font-bold text-base">
+                      <div className="flex items-center gap-2.5">
+                        <CheckCircle2 className="h-5 w-5 text-[#22C55E]" />
                         <h3>Working Approach</h3>
                       </div>
-                      <span className="text-[10px] font-mono text-[#748078]">03</span>
+                      <span className="text-[10px] font-mono text-[#748078]">APPROACH</span>
                     </div>
-                    <p className="text-xs text-[#A8B5AC] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#A8B5AC] leading-relaxed">
                       Research, specification, implementation, testing, verification, documentation, and continuous improvement.
                     </p>
                   </div>
                 </motion.div>
-
               </div>
 
             </div>
@@ -182,33 +141,13 @@ export function AboutSection() {
           </div>
         </div>
 
-        <div className="space-y-3 pt-4 border-t border-[#22C55E]/20">
-          <div className="p-4 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-1">
-            <h3 className="text-sm font-bold text-[#39FF88] flex items-center gap-2">
-              <BarChart3 className="h-4 w-4 text-[#22C55E]" />
-              Data &amp; Analytics
-            </h3>
-            <p className="text-xs text-[#A8B5AC]">
-              SQL analysis, business insights, data cleaning, statistical analysis, cohort retention, dashboards, and reporting.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-1">
-            <h3 className="text-sm font-bold text-[#39FF88] flex items-center gap-2">
-              <Cpu className="h-4 w-4 text-[#22C55E]" />
-              Engineering &amp; Evaluation
-            </h3>
-            <p className="text-xs text-[#A8B5AC]">
-              Python, Docker, Linux, automated testing, oracle verification, deterministic systems, and AI coding-agent evaluation.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-1">
+        <div className="pt-4 border-t border-[#22C55E]/20">
+          <div className="p-5 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-2">
             <h3 className="text-sm font-bold text-[#39FF88] flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-[#22C55E]" />
               Working Approach
             </h3>
-            <p className="text-xs text-[#A8B5AC]">
+            <p className="text-xs text-[#A8B5AC] leading-relaxed">
               Research, specification, implementation, testing, verification, documentation, and continuous improvement.
             </p>
           </div>

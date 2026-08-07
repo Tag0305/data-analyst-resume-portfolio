@@ -59,10 +59,9 @@ export function HeroSection() {
           <div className="hidden md:flex items-center gap-6 text-[#A8B5AC]">
             <span onClick={() => scrollTo("home")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Home</span>
             <span onClick={() => scrollTo("about")} className="cursor-pointer hover:text-[#39FF88] transition-colors">About</span>
+            <span onClick={() => scrollTo("featured-projects")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Projects</span>
             <span onClick={() => scrollTo("expertise")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Expertise</span>
             <span onClick={() => scrollTo("experience")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Experience</span>
-            <span onClick={() => scrollTo("projects")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Projects</span>
-            <span onClick={() => scrollTo("skills")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Skills</span>
             <span onClick={() => scrollTo("education")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Education</span>
             <span onClick={() => scrollTo("contact")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Contact</span>
           </div>
