@@ -4,7 +4,21 @@ import { FadeIn } from "./FadeIn"
 import { LiveProjectButton } from "./LiveProjectButton"
 import { CheckCircle2 } from "lucide-react"
 
-const projectsData = [
+interface ProjectItem {
+  num: string
+  category: string
+  name: string
+  technology: string[]
+  problem: string
+  approach: string
+  result: string
+  image?: string
+  alt?: string
+  isPrivate: boolean
+  githubUrl: string
+}
+
+const projectsData: ProjectItem[] = [
   {
     num: "01",
     category: "Docker & Deterministic Testing",
@@ -26,8 +40,6 @@ const projectsData = [
     problem: "Unstructured transaction histories required quantitative analysis to identify high-value customer segments and calculate cohort retention.",
     approach: "Designed and loaded a multi-table PostgreSQL database simulating e-commerce transaction histories with custom constraints. Optimized analytical queries using CTEs, LEAD, LAG, DENSE_RANK, window functions, and self-joins.",
     result: "Identified product categories with >40% repeat-purchase rates to support marketing and inventory decisions through business KPI models.",
-    image: "/images/projects/sql_e_commerce_analytics_dashboard.png",
-    alt: "SQL e-commerce analytics dashboard with data tables, database schema, queries, and retention analysis.",
     isPrivate: false,
     githubUrl: "https://github.com/Tag0305/sql-ecommerce-analytics"
   },
@@ -39,8 +51,6 @@ const projectsData = [
     problem: "A subscription business faced customer churn without knowing which operational metrics or contract terms were driving cancellations.",
     approach: "Performed exploratory data analysis on a 1,000-customer dataset, engineered and scaled features, and compared Logistic Regression and Random Forest models.",
     result: "Achieved 88.0% prediction accuracy and identified contract terms and subscription tenure as important retention indicators.",
-    image: "/images/projects/customer_churn_analytics_dashboard.png",
-    alt: "Customer churn analytics and predictive modeling dashboard with feature importance and model evaluation panels.",
     isPrivate: false,
     githubUrl: "https://github.com/Tag0305/python-customer-churn-prediction"
   },
@@ -52,14 +62,12 @@ const projectsData = [
     problem: "Manual market data collection was prone to errors, lacking real-time stream ingestion, automated transformations, and structured staging.",
     approach: "Built an automated Python pipeline to ingest real-time market asset data through an API. Loaded the data into a SQLite or BigQuery-style warehouse and applied dbt-style CTE transformations.",
     result: "Developed an automated reporting workflow to present current data metrics.",
-    image: "/images/projects/cloud_data_pipeline_dashboard.png",
-    alt: "End-to-end cloud data pipeline monitoring dashboard with ingestion, transformation, storage, and reporting stages.",
     isPrivate: false,
     githubUrl: "https://github.com/Tag0305/cloud-data-pipeline-simulation"
   }
 ]
 
-function StickyCard({ project, index, totalCards }: { project: typeof projectsData[0]; index: number; totalCards: number }) {
+function StickyCard({ project, index, totalCards }: { project: ProjectItem; index: number; totalCards: number }) {
   const cardRef = React.useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -68,6 +76,8 @@ function StickyCard({ project, index, totalCards }: { project: typeof projectsDa
 
   const targetScale = 1 - (totalCards - 1 - index) * 0.025
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale])
+
+  const hasImage = Boolean(project.image)
 
   return (
     <div
@@ -102,51 +112,83 @@ function StickyCard({ project, index, totalCards }: { project: typeof projectsDa
           />
         </div>
 
-        {/* Card Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 flex-1 items-center overflow-y-auto">
-          {/* Left Column: Project Media Area */}
-          <div className="md:col-span-6 h-full flex items-center justify-center">
-            <div className="project-media w-full">
-              <img
-                src={project.image}
-                alt={project.alt}
-                width={1600}
-                height={900}
-                loading="lazy"
-                decoding="async"
-              />
+        {/* Card Content Grid / Layout */}
+        {hasImage ? (
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 flex-1 items-center overflow-y-auto">
+            {/* Left Column: Project Media Area */}
+            <div className="md:col-span-6 h-full flex items-center justify-center">
+              <div className="project-media w-full">
+                <img
+                  src={project.image}
+                  alt={project.alt || project.name}
+                  width={1600}
+                  height={900}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            {/* Right Column: Project Details */}
+            <div className="md:col-span-6 space-y-3 text-xs sm:text-sm">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#A9B8AE] font-bold block mb-1">Context / Problem</span>
+                <p className="text-[#F4FFF7]/90 leading-relaxed">{project.problem}</p>
+              </div>
+
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#A9B8AE] font-bold block mb-1">Approach</span>
+                <p className="text-[#F4FFF7]/90 leading-relaxed">{project.approach}</p>
+              </div>
+
+              <div className="p-3 rounded-xl bg-[#071009] border border-[#22C55E]/30">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#39FF88] font-bold block mb-1">Verified Result</span>
+                <p className="text-[#86EFAC] font-semibold flex items-start gap-1.5 leading-relaxed">
+                  <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5 text-[#22C55E]" />
+                  {project.result}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {project.technology.map((t) => (
+                  <span key={t} className="text-[10px] font-mono bg-[#071009] border border-[#22C55E]/30 px-2.5 py-1 rounded-full text-[#39FF88] font-medium">
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
+        ) : (
+          <div className="w-full flex-1 flex flex-col justify-center space-y-4 text-xs sm:text-sm overflow-y-auto py-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#A9B8AE] font-bold block mb-1">Context / Problem</span>
+                <p className="text-[#F4FFF7]/90 leading-relaxed sm:text-base">{project.problem}</p>
+              </div>
 
-          {/* Right Column: Project Details */}
-          <div className="md:col-span-6 space-y-3 text-xs sm:text-sm">
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#A9B8AE] font-bold block mb-1">Context / Problem</span>
-              <p className="text-[#F4FFF7]/90 leading-relaxed">{project.problem}</p>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#A9B8AE] font-bold block mb-1">Approach</span>
+                <p className="text-[#F4FFF7]/90 leading-relaxed sm:text-base">{project.approach}</p>
+              </div>
             </div>
 
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#A9B8AE] font-bold block mb-1">Approach</span>
-              <p className="text-[#F4FFF7]/90 leading-relaxed">{project.approach}</p>
-            </div>
-
-            <div className="p-3 rounded-xl bg-[#071009] border border-[#22C55E]/30">
+            <div className="p-4 rounded-2xl bg-[#071009] border border-[#22C55E]/30">
               <span className="text-[10px] font-mono uppercase tracking-wider text-[#39FF88] font-bold block mb-1">Verified Result</span>
-              <p className="text-[#86EFAC] font-semibold flex items-start gap-1.5 leading-relaxed">
-                <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5 text-[#22C55E]" />
+              <p className="text-[#86EFAC] font-semibold flex items-start gap-2 leading-relaxed sm:text-base">
+                <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5 text-[#22C55E]" />
                 {project.result}
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 pt-1">
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#22C55E]/15">
               {project.technology.map((t) => (
-                <span key={t} className="text-[10px] font-mono bg-[#071009] border border-[#22C55E]/30 px-2.5 py-1 rounded-full text-[#39FF88] font-medium">
+                <span key={t} className="text-[10px] sm:text-xs font-mono bg-[#071009] border border-[#22C55E]/30 px-3 py-1 rounded-full text-[#39FF88] font-medium">
                   {t}
                 </span>
               ))}
             </div>
           </div>
-        </div>
+        )}
       </motion.div>
     </div>
   )
