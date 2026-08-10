@@ -13,21 +13,23 @@ const projectsData = [
     problem: "Evaluating advanced AI coding agents requires reproducible, containerized test suites that prevent hallucinated passes and hardcoded solutions.",
     approach: "Designed offline, self-contained benchmark tasks with public technical contracts, oracle solutions, automated verification, negative controls, and edge-case coverage.",
     result: "Built reproducible verification systems ensuring deterministic evaluation results and state consistency.",
-    image: "/images/projects/ai-benchmark-evaluation.png",
-    alt: "Abstract AI benchmark verification environment with deterministic testing nodes, isolated systems, and validation controls.",
-    githubUrl: "https://github.com/Tag0305"
+    image: "/images/projects/ai_benchmark_evaluation_dashboard.png",
+    alt: "Deterministic AI benchmark verification dashboard with isolated testing nodes and validation controls.",
+    isPrivate: true,
+    githubUrl: ""
   },
   {
     num: "02",
     category: "PostgreSQL & SQL Analytics",
     name: "SQL E-Commerce Business Analytics",
-    technology: ["PostgreSQL", "SQL"],
+    technology: ["PostgreSQL", "SQL", "CTEs", "Window Functions", "Schema Design"],
     problem: "Unstructured transaction histories required quantitative analysis to identify high-value customer segments and calculate cohort retention.",
-    approach: "Designed and loaded a multi-table PostgreSQL database simulating e-commerce transaction histories with custom constraints. Optimised analytical queries using CTEs, LEAD, LAG, DENSE_RANK, window functions, and self-joins.",
-    result: "Identified product categories with more than 40% repeat-purchase rates to support marketing and inventory decisions through business KPI models.",
-    image: "/images/projects/sql-ecommerce-analytics.png",
-    alt: "Technical e-commerce analytics environment showing a relational database, customers, orders, products, and business charts.",
-    githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
+    approach: "Designed and loaded a multi-table PostgreSQL database simulating e-commerce transaction histories with custom constraints. Optimized analytical queries using CTEs, LEAD, LAG, DENSE_RANK, window functions, and self-joins.",
+    result: "Identified product categories with >40% repeat-purchase rates to support marketing and inventory decisions through business KPI models.",
+    image: "/images/projects/sql_e_commerce_analytics_dashboard.png",
+    alt: "SQL e-commerce analytics dashboard with data tables, database schema, queries, and retention analysis.",
+    isPrivate: false,
+    githubUrl: "https://github.com/Tag0305/sql-ecommerce-analytics"
   },
   {
     num: "03",
@@ -37,9 +39,10 @@ const projectsData = [
     problem: "A subscription business faced customer churn without knowing which operational metrics or contract terms were driving cancellations.",
     approach: "Performed exploratory data analysis on a 1,000-customer dataset, engineered and scaled features, and compared Logistic Regression and Random Forest models.",
     result: "Achieved 88.0% prediction accuracy and identified contract terms and subscription tenure as important retention indicators.",
-    image: "/images/projects/customer-churn-analytics.png",
-    alt: "Machine-learning customer churn analysis showing customer data flowing into retained and churn-risk prediction groups.",
-    githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
+    image: "/images/projects/customer_churn_analytics_dashboard.png",
+    alt: "Customer churn analytics and predictive modeling dashboard with feature importance and model evaluation panels.",
+    isPrivate: false,
+    githubUrl: "https://github.com/Tag0305/python-customer-churn-prediction"
   },
   {
     num: "04",
@@ -49,9 +52,10 @@ const projectsData = [
     problem: "Manual market data collection was prone to errors, lacking real-time stream ingestion, automated transformations, and structured staging.",
     approach: "Built an automated Python pipeline to ingest real-time market asset data through an API. Loaded the data into a SQLite or BigQuery-style warehouse and applied dbt-style CTE transformations.",
     result: "Developed an automated reporting workflow to present current data metrics.",
-    image: "/images/projects/cloud-data-pipeline.png",
-    alt: "Automated data pipeline showing API ingestion, transformation, database storage, SQL processing, and analytics reporting.",
-    githubUrl: "https://github.com/Tag0305/data-analyst-resume-portfolio"
+    image: "/images/projects/cloud_data_pipeline_dashboard.png",
+    alt: "End-to-end cloud data pipeline monitoring dashboard with ingestion, transformation, storage, and reporting stages.",
+    isPrivate: false,
+    githubUrl: "https://github.com/Tag0305/cloud-data-pipeline-simulation"
   }
 ]
 
@@ -73,7 +77,7 @@ function StickyCard({ project, index, totalCards }: { project: typeof projectsDa
     >
       <motion.div
         style={{ scale }}
-        className="project-card w-full p-5 sm:p-7 md:p-8 flex flex-col justify-between shadow-2xl overflow-hidden"
+        className="project-card w-full p-5 sm:p-7 md:p-8 flex flex-col justify-between shadow-2xl overflow-hidden bg-[#0D1812] border border-[#22C55E]/25 rounded-3xl"
       >
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#22C55E]/20 pb-4 mb-4">
@@ -91,19 +95,23 @@ function StickyCard({ project, index, totalCards }: { project: typeof projectsDa
             </div>
           </div>
 
-          <LiveProjectButton href={project.githubUrl} label="View Repository" />
+          <LiveProjectButton
+            href={project.githubUrl}
+            label="View Repository"
+            isPrivate={project.isPrivate}
+          />
         </div>
 
         {/* Card Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 flex-1 items-center overflow-y-auto">
           {/* Left Column: Project Media Area */}
           <div className="md:col-span-6 h-full flex items-center justify-center">
-            <div className="project-media">
+            <div className="project-media w-full">
               <img
                 src={project.image}
                 alt={project.alt}
                 width={1600}
-                height={1000}
+                height={900}
                 loading="lazy"
                 decoding="async"
               />
@@ -146,7 +154,7 @@ function StickyCard({ project, index, totalCards }: { project: typeof projectsDa
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="bg-[#030604] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-20 px-5 sm:px-8 md:px-10 py-20 pb-32">
+    <section id="projects" className="bg-[#030604] border-t border-[#22C55E]/20 relative z-20 px-5 sm:px-8 md:px-10 py-20 pb-32">
       <div className="max-w-6xl mx-auto space-y-14">
         <FadeIn delay={0} y={30}>
           <div className="text-center space-y-2">

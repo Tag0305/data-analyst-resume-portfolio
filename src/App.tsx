@@ -2,7 +2,7 @@ import * as React from "react"
 import { LoadingScreen } from "./components/layout/LoadingScreen"
 import { HeroSection } from "./components/creator/HeroSection"
 import { AboutSection } from "./components/creator/AboutSection"
-import { FeaturedProjectsSection } from "./components/creator/FeaturedProjectsSection"
+import { ProjectsSection } from "./components/creator/ProjectsSection"
 import { CoreExpertiseSection } from "./components/creator/CoreExpertiseSection"
 import { ExperienceSection } from "./components/experience/ExperienceSection"
 import { Career } from "./components/portfolio3d/Career"
@@ -23,15 +23,15 @@ export default function App() {
         {/* 3. ABOUT ME SECTION */}
         <AboutSection />
 
-        {/* 4. FEATURED PROJECTS SECTION */}
-        <FeaturedProjectsSection />
+        {/* 4. MAIN PROJECTS SECTION (ONE SINGLE PROJECT SECTION WITH CARDS 01, 02, 03, 04) */}
+        <ProjectsSection />
 
         {/* 5. CORE EXPERTISE SECTION */}
         <CoreExpertiseSection />
 
         {/* 6, 7 & 8. MAIN CONTENT CONTAINER: EXPERIENCE, EDUCATION & CERTIFICATIONS, CONTACT */}
         <main className="container mx-auto max-w-6xl px-4 sm:px-6 py-6 space-y-16 relative z-30">
-          {/* 6. Professional Experience */}
+          {/* 6. Professional Experience (Airdawgs: Terminus & Sentinel) */}
           <ExperienceSection />
 
           {/* 7. Academic Timeline & Certifications */}
