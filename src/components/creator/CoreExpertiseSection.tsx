@@ -18,7 +18,7 @@ const expertiseItems = [
   },
   {
     num: "03",
-    title: "AI Benchmark Evaluation",
+    title: "AI Benchmark & Evaluation",
     icon: ShieldCheck,
     description: "Designing deterministic evaluation tasks, public technical contracts, oracle solutions, automated verifiers, negative controls, and reproducible test environments.",
     tags: ["Docker", "Python", "Oracle Verifiers", "Deterministic Testing", "Linux"]
@@ -64,12 +64,12 @@ export function CoreExpertiseSection() {
                 <div className="expertise-card group rounded-3xl p-6 sm:p-8 flex flex-col justify-between h-full space-y-6 bg-[#071009] border border-[#22C55E]/24 hover:border-[#39FF88]/58 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,0,0,0.38),0_0_34px_rgba(34,197,94,0.08)] transition-all duration-300 relative overflow-hidden">
                   
                   {/* Card Header: Number + Line Icon Container */}
-                  <div className="flex items-center justify-between border-b border-[#22C55E]/16 pb-4">
+                  <div className="flex items-center justify-between border-b border-[#22C55E]/20 pb-4">
                     <span className="font-mono font-bold text-[#39FF88] text-2xl sm:text-3xl">
                       {item.num}
                     </span>
-                    <div className="w-[54px] h-[54px] rounded-2xl bg-[#22C55E]/08 border border-[#39FF88]/30 flex items-center justify-center text-[#39FF88] group-hover:border-[#39FF88] group-hover:bg-[#22C55E]/15 transition-all">
-                      <Icon className="h-6 w-6" />
+                    <div className="w-[54px] h-[54px] rounded-2xl bg-[#071009] border border-[#22C55E]/30 flex items-center justify-center text-[#39FF88] group-hover:border-[#39FF88]/60 group-hover:bg-[#22C55E]/10 transition-all">
+                      <Icon className="h-6 w-6 text-[#39FF88]" />
                     </div>
                   </div>
 
@@ -84,11 +84,11 @@ export function CoreExpertiseSection() {
                   </div>
 
                   {/* Dark Technology Chips */}
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#22C55E]/16">
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#22C55E]/20">
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] sm:text-xs font-mono bg-[#22C55E]/06 border border-[#22C55E]/30 text-[#86EFAC] px-3 py-1 rounded-full font-medium transition-colors group-hover:border-[#39FF88]/40"
+                        className="text-[10px] sm:text-xs font-mono bg-[#22C55E]/06 border border-[#22C55E]/30 text-[#86EFAC] px-3 py-1 rounded-full font-medium transition-colors hover:bg-[#22C55E]/12 hover:border-[#39FF88]/50"
                       >
                         {tag}
                       </span>
