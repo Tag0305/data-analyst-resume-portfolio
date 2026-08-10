@@ -74,7 +74,7 @@ export function AboutSection() {
               {/* Paragraphs */}
               <div className="col-span-7 space-y-5 text-base sm:text-lg leading-relaxed font-sans">
                 <motion.p style={shouldReduceMotion ? {} : { opacity: p1Opacity, y: p1Y }} className="text-[#F4FFF7] font-medium">
-                  I am Ronanki Tagore, a Data Analyst, SQL Developer, and AI Benchmark &amp; Evaluation Developer at AirDawg Labs with a B.Tech in Electronics and Communication Engineering from IIIT Manipur.
+                  I am Ronanki Tagore, a Data Analyst, SQL Developer, and Freelance AI Evaluation &amp; Benchmark Developer working with Airdawgs with a B.Tech in Electronics and Communication Engineering from IIIT Manipur.
                 </motion.p>
 
                 <motion.p style={shouldReduceMotion ? {} : { opacity: p2Opacity, y: p2Y }} className="text-[#A8B5AC]">
@@ -125,7 +125,7 @@ export function AboutSection() {
 
         <div className="space-y-4 text-sm text-[#A8B5AC] leading-relaxed">
           <p className="text-[#F4FFF7] font-medium text-base">
-            I am Ronanki Tagore, a Data Analyst, SQL Developer, and AI Benchmark &amp; Evaluation Developer at AirDawg Labs with a B.Tech in Electronics and Communication Engineering from IIIT Manipur.
+            I am Ronanki Tagore, a Data Analyst, SQL Developer, and Freelance AI Evaluation &amp; Benchmark Developer working with Airdawgs with a B.Tech in Electronics and Communication Engineering from IIIT Manipur.
           </p>
 
           <p>
