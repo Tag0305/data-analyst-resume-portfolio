@@ -119,7 +119,7 @@ export function HeroSection() {
         <FadeIn delay={0.35} y={20} className="max-w-md space-y-2">
           <div className="flex items-center gap-2 text-[10px] font-mono text-[#39FF88] font-bold uppercase tracking-widest">
             <span className="w-2.5 h-2.5 rounded-full bg-[#39FF88] animate-ping inline-block" />
-            <span>Independent / Freelance • July 2026 – Present</span>
+            <span>AirDawg Labs • July 2026 – Present</span>
           </div>
           <p className="text-[#A8B5AC] font-light uppercase tracking-wide leading-snug text-xs sm:text-sm md:text-base">
             I transform raw data and complex technical requirements into reliable analysis, reproducible systems, and rigorous AI evaluations.

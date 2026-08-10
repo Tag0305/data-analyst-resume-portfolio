@@ -56,7 +56,7 @@ export const portfolioData = {
     name: "Ronanki Tagore",
     title: "Data Analyst | SQL Developer | Python & Business Intelligence Enthusiast",
     roles: [
-      "Independent AI Benchmark Developer",
+      "AI Benchmark & Evaluation Developer @ AirDawg Labs",
       "Data Analyst",
       "SQL Developer",
       "Python Enthusiast"
@@ -67,21 +67,22 @@ export const portfolioData = {
     github: "https://github.com/Tag0305",
     linkedin: "https://linkedin.com/in/tagoreronanki",
     portfolio: "https://tagore-ronanki.netlify.app",
-    summary: "I am an Electronics and Communication Engineering student at IIIT Manipur with hands-on experience in SQL, Python, business analytics, predictive modelling and data pipeline development. Currently working as an Independent AI Benchmark & Evaluation Developer, designing containerized evaluation suites and deterministic verifier systems."
+    summary: "I am an Electronics and Communication Engineering student at IIIT Manipur with hands-on experience in SQL, Python, business analytics, predictive modelling and data pipeline development. Currently working at AirDawg Labs, where I contributed to Terminus Edition 2 and am currently developing the Sentinel project, designing containerized evaluation suites and deterministic verifier systems."
   },
   experience: [
     {
-      title: "Independent AI Benchmark & Evaluation Developer",
-      company: "Freelance / Independent",
+      title: "AI Benchmark & Evaluation Developer",
+      company: "AirDawg Labs",
       period: "July 2026 – Present",
       description: [
+        "Contributed to Terminus Edition 2: Engineered deterministic benchmark environments, automated oracle verifiers, and offline test suites for AI coding agents.",
+        "Currently leading development on the Sentinel Project: Building robust verification systems, state-consistency checkers, and comprehensive edge-case evaluation harnesses.",
         "Design deterministic coding benchmarks for evaluating advanced AI agents in offline, containerized environments.",
         "Develop technical specifications, Docker environments, automated test suites, oracle solutions, scoring rubrics, and submission packages.",
         "Build verification systems covering edge cases, invalid inputs, state consistency, recovery behavior, reproducibility, and anti-hardcoding requirements.",
-        "Diagnose verifier, Docker, security, and packaging failures using Python, Go, Java, Bash, Git, Docker, and Linux.",
-        "Incorporate reviewer feedback while preserving fairness, difficulty, deterministic behavior, and clearly documented requirements."
+        "Diagnose verifier, Docker, security, and packaging failures using Python, Go, Java, Bash, Git, Docker, and Linux."
       ],
-      technologies: ["Python", "Docker", "Go", "Java", "Bash", "Linux", "Git", "AI Agent Evaluation"]
+      technologies: ["Python", "Docker", "Go", "Java", "Bash", "Linux", "Git", "Terminus Edition 2", "Sentinel Project", "AI Agent Evaluation"]
     }
   ],
   skills: {
