@@ -69,7 +69,7 @@ export const portfolioData = {
       "SQL Developer",
       "Python Enthusiast"
     ],
-    location: "Bengaluru, Karnataka, India",
+    location: "Palasa, Srikakulam, Andhra Pradesh, India",
     email: "tagoreronanki77@gmail.com",
     phone: "+91 9390017456",
     github: "https://github.com/Tag0305",
