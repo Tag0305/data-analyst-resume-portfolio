@@ -74,7 +74,7 @@ export const portfolioData = {
     phone: "+91 9390017456",
     github: "https://github.com/Tag0305",
     linkedin: "https://linkedin.com/in/tagoreronanki",
-    portfolio: "https://tagore-ronanki.netlify.app",
+    portfolio: "https://data-analyst-resume-portfolio.vercel.app",
     summary: "I am an Electronics and Communication Engineering student at IIIT Manipur with hands-on experience in SQL, Python, business analytics, predictive modelling and data pipeline development. Currently working as a Freelance AI Evaluation & Benchmark Developer with Airdawgs, having completed Project Terminus and currently working on Project Sentinel."
   },
   experience: [

@@ -211,7 +211,7 @@ export function HeroSection() {
           </span>
         </div>
         <span className="font-mono text-xs" style={{ color: "#C9A84C" }}>
-          tagore-ronanki.netlify.app
+          data-analyst-resume-portfolio.vercel.app
         </span>
       </div>
 
