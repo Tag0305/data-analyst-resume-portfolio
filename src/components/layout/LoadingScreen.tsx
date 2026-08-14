@@ -5,7 +5,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [fadeOut, setFadeOut] = React.useState(false)
 
   React.useEffect(() => {
-    // Check if user already saw loader this session
+    // Skip loader on subsequent page visits this session
     const hasLoaded = sessionStorage.getItem("rt_loaded")
     if (hasLoaded) {
       onComplete()
@@ -18,9 +18,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
           clearInterval(interval)
           setFadeOut(true)
           sessionStorage.setItem("rt_loaded", "true")
-          setTimeout(() => {
-            onComplete()
-          }, 400)
+          setTimeout(() => { onComplete() }, 500)
           return 100
         }
         return prev + 10
@@ -32,33 +30,64 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-background transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-500 ${
         fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
+      style={{ background: "#FAF9F6" }}
     >
       <div className="flex flex-col items-center space-y-6 max-w-xs text-center px-4">
-        {/* Brand Initial Badge */}
-        <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shadow-lg shadow-emerald-500/10 animate-pulse">
-          <span className="text-xl font-black text-emerald-400 font-mono">RT</span>
+        {/* Gold initials badge */}
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center"
+          style={{
+            background: "rgba(201,168,76,0.08)",
+            border: "1px solid rgba(201,168,76,0.35)"
+          }}
+        >
+          <span
+            className="font-serif italic text-xl font-bold"
+            style={{ color: "#C9A84C" }}
+          >
+            RT
+          </span>
         </div>
 
-        {/* Title & Status */}
+        {/* Name */}
         <div className="space-y-1">
-          <h2 className="text-sm font-bold tracking-widest uppercase text-foreground">Ronanki Tagore</h2>
-          <p className="text-[10px] font-mono text-muted-foreground uppercase">Data Analytics • 3D Workspace</p>
+          <h2
+            className="font-serif text-sm font-bold tracking-widest uppercase"
+            style={{ color: "#1a1a1a" }}
+          >
+            Ronanki Tagore
+          </h2>
+          <p
+            className="font-mono text-xs uppercase tracking-widest"
+            style={{ color: "#888" }}
+          >
+            Data Analyst & AI Evaluation Developer
+          </p>
         </div>
 
-        {/* Progress Bar */}
+        {/* Gold progress bar */}
         <div className="w-48 space-y-2">
-          <div className="h-1 w-full bg-secondary rounded-full overflow-hidden">
+          <div
+            className="h-0.5 w-full rounded-full overflow-hidden"
+            style={{ background: "rgba(201,168,76,0.20)" }}
+          >
             <div
-              className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-150 ease-out"
-              style={{ width: `${progress}%` }}
+              className="h-full rounded-full transition-all duration-150 ease-out"
+              style={{
+                width: `${progress}%`,
+                background: "linear-gradient(90deg, #C9A84C, #9A7A2A)"
+              }}
             />
           </div>
-          <div className="flex justify-between items-center text-[10px] font-mono text-muted-foreground">
-            <span>Loading assets...</span>
-            <span className="text-emerald-400 font-bold">{progress}%</span>
+          <div
+            className="flex justify-between items-center font-mono text-xs"
+            style={{ color: "#888" }}
+          >
+            <span>Loading...</span>
+            <span style={{ color: "#C9A84C", fontWeight: 700 }}>{progress}%</span>
           </div>
         </div>
       </div>

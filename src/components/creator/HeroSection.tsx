@@ -1,150 +1,226 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion"
-import { FadeIn } from "./FadeIn"
-import { Magnet } from "./Magnet"
-import { ContactButton } from "./ContactButton"
-import { FileText, ArrowDownRight } from "lucide-react"
+import * as React from "react"
+import { RoleTicker } from "./RoleTicker"
+import { ArrowDownRight, FileText, Mail } from "lucide-react"
+
+const NAV_LINKS = [
+  { label: "About", id: "about" },
+  { label: "Projects", id: "projects" },
+  { label: "Expertise", id: "expertise" },
+  { label: "Experience", id: "experience" },
+  { label: "Education", id: "career" },
+  { label: "Contact", id: "contact" },
+]
 
 export function HeroSection() {
-  const shouldReduceMotion = useReducedMotion()
+  const [scrolled, setScrolled] = React.useState(false)
+  const [activeSection, setActiveSection] = React.useState("home")
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id)
     if (el) el.scrollIntoView({ behavior: "smooth" })
   }
 
-  // 2D Entrance & Folded-Arms Pose Settlement Variants (100% 2D)
-  const avatar2DVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      x: 36,
-      y: 8,
-      scale: 0.98
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.65,
-        delay: 0.3
-      }
-    },
-    foldedArmsSettle: {
-      y: [0, -3, 0],
-      rotate: [0, -0.5, 0],
-      transition: {
-        duration: 0.85,
-        delay: 0.95
-      }
-    }
-  }
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  React.useEffect(() => {
+    const ids = ["home", ...NAV_LINKS.map(l => l.id)]
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { rootMargin: "-40% 0px -50% 0px" }
+    )
+    ids.forEach(id => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-between overflow-x-clip bg-[#020503] text-[#F4FFF7]">
-      {/* Background Radial Glow & Thin Data Grid */}
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-radial from-[#22C55E]/20 via-[#071009]/10 to-transparent blur-3xl" />
-        <div className="w-full h-full bg-[linear-gradient(to_right,rgba(34,197,94,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(34,197,94,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30" />
-      </div>
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col justify-between overflow-x-clip bg-[#FAF9F6]"
+    >
+      {/* Gold gradient bars */}
+      <div className="hero-gold-bar-top" />
+      <div className="hero-gold-bar-bottom" />
 
-      {/* Sticky Translucent Navigation Bar */}
-      <FadeIn delay={0} y={-20}>
-        <nav className="w-full flex flex-wrap items-center justify-between px-6 md:px-10 pt-6 md:pt-8 text-[#F4FFF7] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-lg gap-4 z-40 relative">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo("home")}>
-            <span className="bg-[#22C55E] text-[#021006] font-black text-xs px-2 py-0.5 rounded font-mono">TR</span>
-            <span className="font-extrabold tracking-widest text-[#39FF88]">TAGORE</span>
-          </div>
+      {/* ── NAVIGATION ── */}
+      <nav
+        className={`w-full flex items-center justify-between px-6 md:px-10 py-5 z-40 relative sticky top-0 transition-all duration-300 ${
+          scrolled ? "nav-frosted shadow-sm" : ""
+        }`}
+      >
+        {/* Logo */}
+        <button
+          onClick={() => scrollTo("home")}
+          className="flex items-center gap-2 cursor-pointer group"
+        >
+          <span
+            className="font-serif italic text-xl font-bold"
+            style={{ color: "#C9A84C" }}
+          >
+            RT
+          </span>
+          <span
+            className="font-sans font-semibold text-sm tracking-widest uppercase"
+            style={{ color: "#1a1a1a" }}
+          >
+            Tagore
+          </span>
+        </button>
 
-          <div className="hidden md:flex items-center gap-6 text-[#A8B5AC]">
-            <span onClick={() => scrollTo("home")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Home</span>
-            <span onClick={() => scrollTo("about")} className="cursor-pointer hover:text-[#39FF88] transition-colors">About</span>
-            <span onClick={() => scrollTo("projects")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Projects</span>
-            <span onClick={() => scrollTo("expertise")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Expertise</span>
-            <span onClick={() => scrollTo("experience")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Experience</span>
-            <span onClick={() => scrollTo("education")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Education</span>
-            <span onClick={() => scrollTo("contact")} className="cursor-pointer hover:text-[#39FF88] transition-colors">Contact</span>
-          </div>
+        {/* Links */}
+        <div className="hidden md:flex items-center gap-7">
+          {NAV_LINKS.map(link => (
+            <span
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className={`nav-link${activeSection === link.id ? " active" : ""}`}
+            >
+              {link.label}
+            </span>
+          ))}
+        </div>
 
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block">
-            <button className="rounded-full border border-[#22C55E]/40 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#39FF88] bg-[#071009] hover:bg-[#22C55E] hover:text-[#021006] transition-colors cursor-pointer">
-              Résumé PDF
-            </button>
-          </a>
-        </nav>
-      </FadeIn>
+        {/* CTA */}
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold-outline text-xs hidden sm:inline-flex"
+        >
+          Résumé PDF
+        </a>
+      </nav>
 
-      {/* Hero Main: Premium Oversized TAGORE Name & 2D Animated Avatar */}
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 my-auto relative z-20">
+      {/* ── HERO MAIN ── */}
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 my-auto relative z-10">
         <div className="hero-main">
-          
-          {/* Hero Name Wrapper */}
-          <div className="hero-name-wrap space-y-3">
-            <FadeIn delay={0.15} y={30}>
-              <h1 className="hero-name" data-text="TAGORE">
-                TAGORE
-              </h1>
-            </FadeIn>
-
-            <FadeIn delay={0.25} y={20}>
-              <p className="text-xs sm:text-sm md:text-base font-mono font-bold uppercase tracking-widest text-[#39FF88]">
-                Data Analyst • SQL Developer • Freelance AI Evaluation &amp; Benchmark Developer
-              </p>
-            </FadeIn>
-          </div>
-
-          {/* Hero Avatar Wrapper: 2D Entrance & Folded-Arms Pose Settle (Runs Once On Page Open) */}
-          <div className="hero-avatar-wrap">
-            <Magnet padding={120} strength={3}>
-              <motion.div
-                initial={shouldReduceMotion ? "visible" : "hidden"}
-                animate={shouldReduceMotion ? "visible" : ["visible", "foldedArmsSettle"]}
-                variants={avatar2DVariants}
-                className="relative group pointer-events-auto"
+          {/* Left: Name + Ticker + Description */}
+          <div
+            className="hero-name-wrap space-y-5"
+            style={{ animation: "heroFadeIn 0.9s ease forwards" }}
+          >
+            {/* Eyebrow */}
+            <div className="flex items-center gap-2" style={{ opacity: 0, animation: "heroFadeIn 0.6s ease 0.1s forwards" }}>
+              <span
+                className="font-mono text-xs uppercase tracking-widest font-semibold"
+                style={{ color: "#C9A84C" }}
               >
-                <img
-                  src="/avatar.png"
-                  alt="Illustrated avatar of Ronanki Tagore standing confidently with folded arms"
-                  className="hero-avatar pointer-events-auto drop-shadow-[0_15px_35px_rgba(34,197,94,0.25)]"
-                />
-              </motion.div>
-            </Magnet>
+                // Data & AI Developer
+              </span>
+            </div>
+
+            {/* Name */}
+            <div style={{ opacity: 0, animation: "heroFadeIn 0.8s ease 0.2s forwards" }}>
+              <h1 className="hero-name">
+                Ronanki
+              </h1>
+              <h1 className="hero-name hero-name-gold italic">
+                Tagore
+              </h1>
+            </div>
+
+            {/* Role Ticker */}
+            <div
+              className="flex items-center gap-3"
+              style={{ opacity: 0, animation: "heroFadeIn 0.8s ease 0.35s forwards" }}
+            >
+              <span
+                className="font-mono text-xs uppercase tracking-widest"
+                style={{ color: "#888" }}
+              >
+                Currently —
+              </span>
+              <RoleTicker />
+            </div>
+
+            {/* Description with gold left border */}
+            <div
+              className="border-l-2 pl-4 max-w-md"
+              style={{
+                borderColor: "#C9A84C",
+                opacity: 0,
+                animation: "heroFadeIn 0.8s ease 0.5s forwards"
+              }}
+            >
+              <p className="text-sm leading-relaxed" style={{ color: "#555" }}>
+                I transform raw data and complex technical requirements into{" "}
+                <strong style={{ color: "#1a1a1a" }}>reliable analysis</strong>,{" "}
+                <strong style={{ color: "#1a1a1a" }}>reproducible systems</strong>, and{" "}
+                <strong style={{ color: "#1a1a1a" }}>rigorous AI evaluations</strong>.
+                Freelance AI Evaluation & Benchmark Developer at{" "}
+                <strong style={{ color: "#C9A84C" }}>Airdawgs</strong>.
+              </p>
+            </div>
+
+            {/* CTAs */}
+            <div
+              className="flex flex-wrap gap-3 items-center"
+              style={{ opacity: 0, animation: "heroFadeIn 0.8s ease 0.65s forwards" }}
+            >
+              <button onClick={() => scrollTo("projects")} className="btn-gold">
+                View Projects
+                <ArrowDownRight className="h-4 w-4" />
+              </button>
+              <a href="/resume.pdf" download="Ronanki_Tagore_Resume.pdf" className="btn-gold-outline">
+                <FileText className="h-4 w-4" />
+                Download Résumé
+              </a>
+              <button
+                onClick={() => scrollTo("contact")}
+                className="btn-gold-outline"
+              >
+                <Mail className="h-4 w-4" />
+                Hire Me
+              </button>
+            </div>
           </div>
 
+          {/* Right: Avatar */}
+          <div
+            className="hero-avatar-wrap"
+            style={{ opacity: 0, animation: "heroFadeIn 0.9s ease 0.3s forwards" }}
+          >
+            <img
+              src="/avatar.png"
+              alt="Illustrated avatar of Ronanki Tagore"
+              className="hero-avatar"
+            />
+          </div>
         </div>
       </div>
 
-      {/* Bottom Bar: Introductory Copy & Green Accent Buttons */}
-      <div className="w-full flex flex-col md:flex-row items-start md:items-end justify-between px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 relative z-30 gap-6">
-        <FadeIn delay={0.35} y={20} className="max-w-md space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-mono text-[#39FF88] font-bold uppercase tracking-widest">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#39FF88] animate-ping inline-block" />
-            <span>Airdawgs · Freelance • July 2026 – Present</span>
-          </div>
-          <p className="text-[#A8B5AC] font-light uppercase tracking-wide leading-snug text-xs sm:text-sm md:text-base">
-            I transform raw data and complex technical requirements into reliable analysis, reproducible systems, and rigorous AI evaluations.
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={0.5} y={20} className="flex flex-wrap gap-3 items-center">
-          <button
-            onClick={() => scrollTo("projects")}
-            className="inline-flex items-center gap-2 rounded-full bg-[#22C55E] hover:bg-[#39FF88] text-[#021006] font-bold uppercase tracking-wider text-xs px-6 py-3.5 cursor-pointer shadow-lg shadow-[#22C55E]/30 transition-all hover:scale-105"
-          >
-            View Projects
-            <ArrowDownRight className="h-4 w-4" />
-          </button>
-
-          <a href="/resume.pdf" download="Ronanki_Tagore_Resume.pdf">
-            <button className="inline-flex items-center gap-2 rounded-full border border-[#22C55E]/40 bg-[#071009] hover:border-[#39FF88] px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-[#F4FFF7] hover:text-[#39FF88] transition-colors cursor-pointer">
-              <FileText className="h-4 w-4 text-[#39FF88]" />
-              Download Résumé
-            </button>
-          </a>
-
-          <ContactButton />
-        </FadeIn>
+      {/* ── BOTTOM STATUS BADGE ── */}
+      <div
+        className="w-full flex items-center justify-between px-6 md:px-10 pb-8 relative z-10"
+        style={{ opacity: 0, animation: "heroFadeIn 0.8s ease 0.8s forwards" }}
+      >
+        <div className="flex items-center gap-2">
+          <div className="avail-dot" />
+          <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#555" }}>
+            Airdawgs · Freelance &nbsp;•&nbsp; July 2026 – Present
+          </span>
+        </div>
+        <span className="font-mono text-xs" style={{ color: "#C9A84C" }}>
+          tagore-ronanki.netlify.app
+        </span>
       </div>
+
+      <style>{`
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   )
 }

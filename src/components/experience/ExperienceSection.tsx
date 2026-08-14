@@ -1,103 +1,195 @@
-import { Card } from "../ui/card"
-import { Badge } from "../ui/badge"
-import { Briefcase, CheckCircle2, Calendar, FolderGit2 } from "lucide-react"
-import { portfolioData, type Experience } from "../../data/portfolioData"
+import * as React from "react"
+import { FadeUp } from "../creator/FadeUp"
+import { portfolioData, type Experience, type ExperienceProject } from "../../data/portfolioData"
 
 export function ExperienceSection() {
+  const experiences = portfolioData.experience as Experience[]
+  // Build flat list of all tabs: one tab per project under each company
+  // For Airdawgs we split into PROJECT TERMINUS + PROJECT SENTINEL
+  const tabs: {
+    company: string
+    companyShort: string
+    period: string
+    title: string
+    project?: ExperienceProject
+    technologies: string[]
+  }[] = []
+
+  experiences.forEach(exp => {
+    if (exp.projects && exp.projects.length > 0) {
+      exp.projects.forEach(proj => {
+        tabs.push({
+          company: exp.company,
+          companyShort: proj.name,
+          period: exp.period,
+          title: exp.title,
+          project: proj,
+          technologies: exp.technologies,
+        })
+      })
+    } else {
+      tabs.push({
+        company: exp.company,
+        companyShort: exp.company,
+        period: exp.period,
+        title: exp.title,
+        technologies: exp.technologies,
+      })
+    }
+  })
+
+  const [activeTab, setActiveTab] = React.useState(0)
+
   return (
-    <section id="experience" className="py-12 border-t border-border/60 scroll-mt-20 space-y-8">
-      <div className="space-y-2">
-        <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold block">
-          // PROFESSIONAL EXPERIENCE
-        </span>
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tight uppercase text-foreground">
-          Work <span className="text-emerald-400">Experience &amp; Benchmarking</span>
-        </h2>
-      </div>
+    <section id="experience" className="section-ivory relative">
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
 
-      <div className="space-y-6">
-        {(portfolioData.experience as Experience[]).map((exp, index) => (
-          <Card key={index} tilt={true} className="p-6 sm:p-8 bg-card/40 border border-border/80 hover:border-emerald-500/40 transition-all space-y-6">
-            
-            {/* Header: Role, Organization & Duration */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/40 pb-4">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <Briefcase className="h-5 w-5 text-emerald-400 shrink-0" />
-                  <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">{exp.title}</h3>
-                </div>
-                <div className="text-xs font-mono font-semibold text-emerald-400">
-                  {exp.company}
-                </div>
+        {/* Heading */}
+        <FadeUp delay={0}>
+          <div className="mb-14 space-y-3">
+            <span className="font-mono text-xs uppercase tracking-widest font-semibold" style={{ color: "#C9A84C" }}>
+              // Professional Experience
+            </span>
+            <h2
+              className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold"
+              style={{ color: "#1a1a1a" }}
+            >
+              Work &amp;{" "}
+              <em style={{ color: "#C9A84C" }}>Benchmarking</em>
+            </h2>
+          </div>
+        </FadeUp>
+
+        {/* Tabbed layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+          {/* Left: Tab list */}
+          <FadeUp delay={0.1} className="md:col-span-4">
+            <div
+              className="rounded-2xl overflow-hidden"
+              style={{ border: "1px solid rgba(201,168,76,0.20)", background: "#FFFFFF" }}
+            >
+              {/* Company header */}
+              <div
+                className="px-5 py-4"
+                style={{ background: "#FAF9F6", borderBottom: "1px solid rgba(201,168,76,0.15)" }}
+              >
+                <p className="font-mono text-xs uppercase tracking-widest" style={{ color: "#888" }}>
+                  Airdawgs · Freelance
+                </p>
+                <p
+                  className="font-serif italic text-lg font-semibold mt-0.5"
+                  style={{ color: "#C9A84C" }}
+                >
+                  Freelance AI Evaluation & Benchmark Developer
+                </p>
+                <p className="font-mono text-xs mt-1" style={{ color: "#888" }}>
+                  July 2026 – Present
+                </p>
               </div>
 
-              <Badge variant="outline" className="text-xs font-mono text-emerald-400 border-emerald-500/30 bg-emerald-500/10 px-3 py-1 w-fit flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5" />
-                {exp.period}
-              </Badge>
-            </div>
-
-            {/* Project Subsections under Airdawgs */}
-            {exp.projects && exp.projects.length > 0 ? (
-              <div className="space-y-6">
-                {exp.projects.map((proj, pIdx) => (
-                  <div key={pIdx} className="space-y-3 p-4 sm:p-5 rounded-2xl bg-secondary/30 border border-border/40 space-y-3">
-                    <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <div className="flex items-center gap-2">
-                        <FolderGit2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                        <h4 className="text-sm sm:text-base font-bold uppercase tracking-wider text-foreground">
-                          {proj.name}
-                        </h4>
-                      </div>
-                      <Badge
-                        variant="outline"
-                        className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full border ${
-                          proj.status === "CURRENT"
-                            ? "border-emerald-400 text-emerald-400 bg-emerald-500/15"
-                            : "border-emerald-500/40 text-emerald-400/80 bg-emerald-500/05"
-                        }`}
-                      >
-                        {proj.status === "CURRENT" ? "CURRENT PROJECT" : proj.status}
-                      </Badge>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      {proj.description}
+              {/* Tab items */}
+              {tabs.map((tab, i) => (
+                <div
+                  key={tab.companyShort}
+                  className={`exp-tab-item ${activeTab === i ? "active" : ""}`}
+                  onClick={() => setActiveTab(i)}
+                >
+                  <p
+                    className="font-mono text-xs uppercase tracking-widest font-bold"
+                    style={{ color: activeTab === i ? "#C9A84C" : "#888" }}
+                  >
+                    {tab.companyShort}
+                  </p>
+                  {tab.project && (
+                    <p className="text-xs mt-0.5" style={{ color: "#1a1a1a" }}>
+                      {tab.project.status === "CURRENT" ? "Current Project" : "Completed"}
                     </p>
-
-                    <ul className="space-y-2 list-none pt-1">
-                      {proj.responsibilities.map((bullet: string, idx: number) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            ) : exp.description ? (
-              <ul className="space-y-3 list-none">
-                {exp.description.map((bullet: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-
-            {/* Technologies */}
-            <div className="pt-2 border-t border-border/40 flex flex-wrap gap-1.5">
-              {exp.technologies.map((tech) => (
-                <span key={tech} className="text-[10px] font-mono bg-secondary/50 border border-border px-2.5 py-1 rounded text-foreground/90 font-medium">
-                  {tech}
-                </span>
+                  )}
+                </div>
               ))}
             </div>
+          </FadeUp>
 
-          </Card>
-        ))}
+          {/* Right: Panel */}
+          <div className="md:col-span-8 relative min-h-[300px]">
+            {tabs.map((tab, i) => {
+              const isActive = activeTab === i
+              const proj = tab.project
+              return (
+                <div key={tab.companyShort} className={`exp-panel ${isActive ? "active" : ""}`}>
+                  {proj && (
+                    <div className="space-y-6">
+                      {/* Project header */}
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <span
+                            className="font-mono text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full"
+                            style={{
+                              background: proj.status === "CURRENT"
+                                ? "rgba(34,197,94,0.12)"
+                                : "rgba(201,168,76,0.10)",
+                              color: proj.status === "CURRENT" ? "#16a34a" : "#9A7A2A",
+                              border: `1px solid ${proj.status === "CURRENT" ? "rgba(34,197,94,0.25)" : "rgba(201,168,76,0.25)"}`
+                            }}
+                          >
+                            {proj.status === "CURRENT" ? "Current" : "Completed"}
+                          </span>
+                          <span className="font-mono text-xs" style={{ color: "#888" }}>
+                            {tab.period}
+                          </span>
+                        </div>
+
+                        <h3 className="font-serif text-2xl sm:text-3xl font-semibold" style={{ color: "#1a1a1a" }}>
+                          <em style={{ color: "#C9A84C" }}>{proj.name}</em>
+                        </h3>
+
+                        <div
+                          className="my-3"
+                          style={{ height: "1px", background: "linear-gradient(90deg, #C9A84C, transparent)" }}
+                        />
+
+                        <p className="text-sm leading-relaxed" style={{ color: "#555" }}>
+                          {proj.description}
+                        </p>
+                      </div>
+
+                      {/* Responsibilities */}
+                      <div className="space-y-2">
+                        <p className="font-mono text-xs uppercase tracking-widest font-semibold" style={{ color: "#C9A84C" }}>
+                          Responsibilities
+                        </p>
+                        <ul className="space-y-2">
+                          {proj.responsibilities.map((bullet: string, idx: number) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-3 text-sm leading-relaxed"
+                              style={{ color: "#555" }}
+                            >
+                              <span
+                                className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full"
+                                style={{ background: "#C9A84C" }}
+                              />
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Tech tags */}
+                      <div className="flex flex-wrap gap-1.5 pt-2" style={{ borderTop: "1px solid rgba(201,168,76,0.15)" }}>
+                        {tab.technologies.map(tech => (
+                          <span key={tech} className="skill-tag">{tech}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
       </div>
     </section>
   )

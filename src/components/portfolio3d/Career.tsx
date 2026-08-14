@@ -1,75 +1,144 @@
-import { Card } from "../ui/card"
-import { Award, ArrowUpRight, GraduationCap } from "lucide-react"
+import { ArrowUpRight, GraduationCap, Award } from "lucide-react"
 import { portfolioData } from "../../data/portfolioData"
+import { FadeUp } from "../creator/FadeUp"
 
 export function Career() {
   return (
-    <section id="career" className="py-12 border-t border-border/60 scroll-mt-20">
-      <div className="space-y-8">
-        <div className="space-y-2">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold block">
-            // 04. CAREER & EDUCATION
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight uppercase text-foreground">
-            Academic <span className="text-emerald-400">Timeline & Certifications</span>
-          </h2>
-        </div>
+    <section id="career" className="section-ivory-dark">
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Education Timeline */}
-          <div className="lg:col-span-7 space-y-6">
-            <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-              <GraduationCap className="h-4 w-4 text-emerald-400" />
-              Education Milestones
-            </h3>
-
-            <div className="relative border-l border-emerald-500/30 pl-6 ml-3 space-y-8 py-2">
-              {portfolioData.education.map((edu, index) => (
-                <div key={index} className="relative space-y-1.5">
-                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-background border-2 border-emerald-400 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <h4 className="text-base font-bold text-foreground leading-tight">{edu.institution}</h4>
-                    <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full w-fit">
-                      {edu.period}
-                    </span>
-                  </div>
-                  
-                  <div className="text-xs text-muted-foreground font-medium">
-                    {edu.degree} {edu.field ? `• ${edu.field}` : ""} • {edu.location}
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* Heading */}
+        <FadeUp delay={0}>
+          <div className="mb-14 space-y-3">
+            <span className="font-mono text-xs uppercase tracking-widest font-semibold" style={{ color: "#C9A84C" }}>
+              // Career & Credentials
+            </span>
+            <h2
+              className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold"
+              style={{ color: "#1a1a1a" }}
+            >
+              Academic{" "}
+              <em style={{ color: "#C9A84C" }}>Timeline & Certifications</em>
+            </h2>
           </div>
+        </FadeUp>
 
-          {/* Certifications List */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-              <Award className="h-4 w-4 text-emerald-400" />
-              Verified Credentials
-            </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
-            <div className="grid grid-cols-1 gap-3">
-              {portfolioData.certifications.map((cert) => (
-                <Card key={cert.name} tilt={true} className="p-4 bg-card/40 border border-border/80 hover:border-emerald-500/40 transition-all flex items-center justify-between">
-                  <div className="space-y-1">
-                    <span className="text-[9px] font-mono uppercase font-bold text-emerald-400 tracking-wider">
-                      {cert.issuer} • {cert.status}
-                    </span>
-                    <h5 className="text-xs font-bold text-foreground leading-snug">{cert.name}</h5>
+          {/* ── Education Timeline ── */}
+          <FadeUp delay={0.1} className="lg:col-span-7">
+            <div className="space-y-6">
+              <div className="flex items-center gap-2 mb-8">
+                <GraduationCap className="h-4 w-4" style={{ color: "#C9A84C" }} />
+                <span className="font-mono text-xs uppercase tracking-widest font-semibold" style={{ color: "#888" }}>
+                  Education Milestones
+                </span>
+              </div>
+
+              <div
+                className="timeline-line relative pl-8 ml-1 space-y-10 py-2"
+                style={{ borderLeft: "2px solid rgba(201,168,76,0.35)" }}
+              >
+                {portfolioData.education.map((edu, index) => (
+                  <div key={index} className="relative space-y-1.5">
+                    {/* Dot */}
+                    <div
+                      className="absolute"
+                      style={{ left: "-8px", top: "4px" }}
+                    >
+                      <div
+                        className="w-3.5 h-3.5 rounded-full flex items-center justify-center"
+                        style={{
+                          background: "#FFFFFF",
+                          border: "2px solid #C9A84C"
+                        }}
+                      >
+                        <div
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: "#C9A84C" }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <h4
+                        className="font-serif text-base sm:text-lg font-semibold leading-snug"
+                        style={{ color: "#1a1a1a" }}
+                      >
+                        {edu.institution}
+                      </h4>
+                      <span
+                        className="font-mono text-xs font-semibold px-3 py-0.5 rounded-full shrink-0"
+                        style={{
+                          background: "rgba(201,168,76,0.10)",
+                          border: "1px solid rgba(201,168,76,0.30)",
+                          color: "#9A7A2A"
+                        }}
+                      >
+                        {edu.period}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm" style={{ color: "#888" }}>
+                      {edu.degree}
+                      {edu.field ? ` · ${edu.field}` : ""}
+                      {" · "}{edu.location}
+                    </p>
                   </div>
-                  {cert.link && (
-                    <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 p-1">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  )}
-                </Card>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </FadeUp>
+
+          {/* ── Certifications ── */}
+          <FadeUp delay={0.18} className="lg:col-span-5">
+            <div className="space-y-5">
+              <div className="flex items-center gap-2 mb-8">
+                <Award className="h-4 w-4" style={{ color: "#C9A84C" }} />
+                <span className="font-mono text-xs uppercase tracking-widest font-semibold" style={{ color: "#888" }}>
+                  Verified Credentials
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                {portfolioData.certifications.map((cert, i) => (
+                  <FadeUp key={cert.name} delay={0.2 + i * 0.06}>
+                    <div
+                      className="contact-card flex items-center justify-between"
+                      style={{ textAlign: "left" }}
+                    >
+                      <div className="space-y-1">
+                        <span
+                          className="font-mono text-xs uppercase tracking-widest font-bold block"
+                          style={{ color: "#C9A84C" }}
+                        >
+                          {cert.issuer} · {cert.status}
+                        </span>
+                        <h5
+                          className="font-sans text-sm font-semibold leading-snug"
+                          style={{ color: "#1a1a1a" }}
+                        >
+                          {cert.name}
+                        </h5>
+                      </div>
+                      {cert.link && (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 ml-3"
+                          style={{ color: "#C9A84C" }}
+                        >
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      )}
+                    </div>
+                  </FadeUp>
+                ))}
+              </div>
+            </div>
+          </FadeUp>
+
         </div>
       </div>
     </section>

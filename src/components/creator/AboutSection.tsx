@@ -1,159 +1,168 @@
 import * as React from "react"
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
-import { ContactButton } from "./ContactButton"
-import { CheckCircle2 } from "lucide-react"
+import { FadeUp } from "./FadeUp"
 
 export function AboutSection() {
   const containerRef = React.useRef<HTMLDivElement>(null)
-  const shouldReduceMotion = useReducedMotion()
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  })
-
-  // Desktop Scroll Reveal Threshold Transforms
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 1])
-  const headingY = useTransform(scrollYProgress, [0, 0.15], [28, 0])
-
-  const p1Opacity = useTransform(scrollYProgress, [0.15, 0.4], [0.3, 1])
-  const p1Y = useTransform(scrollYProgress, [0.15, 0.4], [20, 0])
-
-  const p2Opacity = useTransform(scrollYProgress, [0.4, 0.65], [0.3, 1])
-  const p2Y = useTransform(scrollYProgress, [0.4, 0.65], [20, 0])
-
-  const p3Opacity = useTransform(scrollYProgress, [0.65, 0.82], [0.3, 1])
-  const p3Y = useTransform(scrollYProgress, [0.65, 0.82], [20, 0])
-
-  const blockOpacity = useTransform(scrollYProgress, [0.82, 1.0], [0, 1])
-  const blockY = useTransform(scrollYProgress, [0.82, 1.0], [24, 0])
-
-  // Progress Stage Counter text
-  const currentStage = useTransform(scrollYProgress, [0, 0.4, 0.72, 0.9], ["01 — Introduction", "02 — Technical Focus", "03 — Working Values", "04 — Approach"])
 
   return (
-    <section ref={containerRef} id="about" className="relative bg-[#020503] text-[#F4FFF7] border-t border-b border-[#22C55E]/20">
-      
-      {/* Desktop Sticky Scroll Presentation (180vh outer container, 100vh inner sticky container) */}
-      <div className="hidden md:block min-h-[180vh] relative">
-        <div className="sticky top-0 min-h-screen flex flex-col justify-center px-6 md:px-12 py-16 overflow-hidden">
-          
-          {/* Subtle Aesthetic Data Grid & Progress Indicator */}
-          <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,rgba(34,197,94,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(34,197,94,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          
-          <div className="max-w-6xl mx-auto w-full space-y-8 relative z-10">
-            
-            {/* Scroll Progress Bar & Counter Header */}
-            <div className="flex items-center justify-between border-b border-[#22C55E]/20 pb-3">
-              <div className="flex items-center gap-3">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#39FF88] font-bold">// ABOUT THE DEVELOPER</span>
-                <motion.span className="text-[10px] font-mono text-[#86EFAC] bg-[#071009] px-2.5 py-0.5 rounded-full border border-[#22C55E]/30">
-                  {currentStage}
-                </motion.span>
+    <section
+      ref={containerRef}
+      id="about"
+      className="section-ivory-dark relative"
+    >
+      {/* Subtle grid detail */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-30"
+        style={{
+          backgroundImage: "linear-gradient(to right, rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(201,168,76,0.06) 1px, transparent 1px)",
+          backgroundSize: "4rem 4rem"
+        }}
+      />
+
+      <div className="max-w-6xl mx-auto px-6 md:px-10 relative z-10">
+
+        {/* Section heading */}
+        <FadeUp delay={0}>
+          <div className="mb-14 space-y-3">
+            <span className="font-mono text-xs uppercase tracking-widest font-semibold" style={{ color: "#C9A84C" }}>
+              // About the Developer
+            </span>
+            <h2
+              className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold"
+              style={{ color: "#1a1a1a" }}
+            >
+              Introduction &amp;{" "}
+              <em style={{ color: "#C9A84C" }}>Background</em>
+            </h2>
+          </div>
+        </FadeUp>
+
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+
+          {/* Left column: About paragraphs */}
+          <div className="space-y-8">
+            <FadeUp delay={0.08}>
+              <div className="space-y-2">
+                <span className="font-mono text-xs uppercase tracking-widest font-medium" style={{ color: "#9A7A2A" }}>
+                  01 — Who I Am
+                </span>
+                <p className="leading-relaxed text-sm sm:text-base" style={{ color: "#555" }}>
+                  I am <strong style={{ color: "#1a1a1a" }}>Ronanki Tagore</strong>, a Data Analyst, SQL Developer, and
+                  Freelance AI Evaluation & Benchmark Developer working with{" "}
+                  <strong style={{ color: "#C9A84C" }}>Airdawgs</strong>, with a B.Tech in{" "}
+                  <strong style={{ color: "#1a1a1a" }}>Electronics and Communication Engineering</strong> from IIIT Manipur.
+                </p>
               </div>
+            </FadeUp>
 
-              {/* Progress Line */}
-              <div className="w-32 h-1 bg-[#071009] rounded-full overflow-hidden border border-[#22C55E]/30">
-                <motion.div
-                  className="h-full bg-[#39FF88]"
-                  style={{ scaleX: shouldReduceMotion ? 1 : scrollYProgress, transformOrigin: "left" }}
-                />
+            <FadeUp delay={0.16}>
+              <div className="space-y-2">
+                <span className="font-mono text-xs uppercase tracking-widest font-medium" style={{ color: "#9A7A2A" }}>
+                  02 — Technical Focus
+                </span>
+                <p className="leading-relaxed text-sm sm:text-base" style={{ color: "#555" }}>
+                  My technical work spans <strong style={{ color: "#1a1a1a" }}>SQL analytics</strong>,{" "}
+                  <strong style={{ color: "#1a1a1a" }}>Python-based machine learning</strong>, and{" "}
+                  <strong style={{ color: "#1a1a1a" }}>deterministic AI benchmark engineering</strong>. I build
+                  reproducible systems, design oracle verifiers, and author rigorous
+                  evaluation tasks for coding and machine-learning agents.
+                </p>
               </div>
-            </div>
+            </FadeUp>
 
-            {/* Section Heading */}
-            <motion.div style={shouldReduceMotion ? {} : { opacity: headingOpacity, y: headingY }}>
-              <h2 className="hero-heading font-black uppercase tracking-tight leading-none text-[clamp(3.4rem,8vw,8rem)]">
-                About Me
-              </h2>
-            </motion.div>
-
-            {/* Content Grid: Progressive Text Reveal (Left) + Retained Working Approach Block (Right) */}
-            <div className="grid grid-cols-12 gap-8 items-start">
-              
-              {/* Paragraphs */}
-              <div className="col-span-7 space-y-5 text-base sm:text-lg leading-relaxed font-sans">
-                <motion.p style={shouldReduceMotion ? {} : { opacity: p1Opacity, y: p1Y }} className="text-[#F4FFF7] font-medium">
-                  I am Ronanki Tagore, a Data Analyst, SQL Developer, and Freelance AI Evaluation &amp; Benchmark Developer working with Airdawgs with a B.Tech in Electronics and Communication Engineering from IIIT Manipur.
-                </motion.p>
-
-                <motion.p style={shouldReduceMotion ? {} : { opacity: p2Opacity, y: p2Y }} className="text-[#A8B5AC]">
-                  My work combines data analysis, SQL development, machine learning, automated data pipelines, Docker, testing, and deterministic benchmark development. I focus on converting complex technical requirements into reliable, reproducible, and well-verified systems.
-                </motion.p>
-
-                <motion.p style={shouldReduceMotion ? {} : { opacity: p3Opacity, y: p3Y }} className="text-[#A8B5AC]">
-                  I value clear requirements, accurate analysis, reproducible results, edge-case coverage, and practical technical communication.
-                </motion.p>
-
-                <div className="pt-2">
-                  <ContactButton />
-                </div>
+            <FadeUp delay={0.24}>
+              <div className="space-y-2">
+                <span className="font-mono text-xs uppercase tracking-widest font-medium" style={{ color: "#9A7A2A" }}>
+                  03 — Working Values
+                </span>
+                <p className="leading-relaxed text-sm sm:text-base" style={{ color: "#555" }}>
+                  I believe in <strong style={{ color: "#1a1a1a" }}>clarity over complexity</strong>,{" "}
+                  <strong style={{ color: "#1a1a1a" }}>reproducibility over speed</strong>, and{" "}
+                  <strong style={{ color: "#1a1a1a" }}>precision over assumption</strong>. Every deliverable
+                  is documented, tested, and traceable.
+                </p>
               </div>
+            </FadeUp>
 
-              {/* Retained Working Approach Block (Aligned Cleanly) */}
-              <div className="col-span-5 space-y-3.5">
-                <motion.div style={shouldReduceMotion ? {} : { opacity: blockOpacity, y: blockY }}>
-                  <div className="p-6 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-2 hover:border-[#39FF88]/40 transition-colors shadow-xl">
-                    <div className="flex items-center justify-between text-[#39FF88] font-bold text-base">
-                      <div className="flex items-center gap-2.5">
-                        <CheckCircle2 className="h-5 w-5 text-[#22C55E]" />
-                        <h3>Working Approach</h3>
-                      </div>
-                      <span className="text-[10px] font-mono text-[#748078]">APPROACH</span>
+            <FadeUp delay={0.32}>
+              <div className="space-y-2">
+                <span className="font-mono text-xs uppercase tracking-widest font-medium" style={{ color: "#9A7A2A" }}>
+                  04 — Approach
+                </span>
+                <p className="leading-relaxed text-sm sm:text-base" style={{ color: "#555" }}>
+                  I approach every challenge by first understanding the problem deeply,
+                  then designing solutions that are <strong style={{ color: "#1a1a1a" }}>scalable</strong>,{" "}
+                  <strong style={{ color: "#1a1a1a" }}>maintainable</strong>, and{" "}
+                  <strong style={{ color: "#1a1a1a" }}>auditable</strong>.
+                </p>
+              </div>
+            </FadeUp>
+          </div>
+
+          {/* Right column: Working Approach facts */}
+          <FadeUp delay={0.2} className="h-fit">
+            <div
+              className="rounded-2xl p-8 space-y-6"
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid rgba(201,168,76,0.25)",
+                borderTop: "3px solid #C9A84C"
+              }}
+            >
+              <div>
+                <h3 className="font-serif text-2xl font-bold mb-4" style={{ color: "#1a1a1a" }}>
+                  Working <em style={{ color: "#C9A84C" }}>Approach</em>
+                </h3>
+              </div>
+              {[
+                {
+                  label: "Reproducibility First",
+                  desc: "Every system, benchmark, and analysis is built to produce consistent results across environments and runs."
+                },
+                {
+                  label: "Documentation Driven",
+                  desc: "Clear contracts, structured outputs, and explicit assumptions are non-negotiable in all deliverables."
+                },
+                {
+                  label: "Edge-Case Coverage",
+                  desc: "Invalid inputs, recovery paths, and boundary conditions are treated as primary concerns, not afterthoughts."
+                },
+                {
+                  label: "Business-Aligned",
+                  desc: "Every technical decision traces back to a measurable business outcome or evaluation criterion."
+                }
+              ].map((fact, i) => (
+                <div
+                  key={fact.label}
+                  className="pb-4 border-b last:border-b-0 group cursor-default transition-all"
+                  style={{ borderColor: "rgba(201,168,76,0.15)" }}
+                >
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="font-mono text-xs font-bold mt-0.5"
+                      style={{ color: "#C9A84C" }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <p
+                        className="font-semibold text-sm mb-1 group-hover:translate-x-1 transition-transform"
+                        style={{ color: "#1a1a1a" }}
+                      >
+                        {fact.label}
+                      </p>
+                      <p className="text-xs leading-relaxed" style={{ color: "#888" }}>
+                        {fact.desc}
+                      </p>
                     </div>
-                    <p className="text-xs sm:text-sm text-[#A8B5AC] leading-relaxed">
-                      Research, specification, implementation, testing, verification, documentation, and continuous improvement.
-                    </p>
                   </div>
-                </motion.div>
-              </div>
-
+                </div>
+              ))}
             </div>
-
-          </div>
+          </FadeUp>
         </div>
       </div>
-
-      {/* Mobile Flow (below 768px): Natural Vertical Viewport Reveal */}
-      <div className="block md:hidden px-5 py-16 space-y-8">
-        <div className="space-y-2">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#39FF88] font-bold">// ABOUT THE DEVELOPER</span>
-          <h2 className="hero-heading font-black uppercase tracking-tight leading-none text-[clamp(2.5rem,8vw,56px)]">
-            About Me
-          </h2>
-        </div>
-
-        <div className="space-y-4 text-sm text-[#A8B5AC] leading-relaxed">
-          <p className="text-[#F4FFF7] font-medium text-base">
-            I am Ronanki Tagore, a Data Analyst, SQL Developer, and Freelance AI Evaluation &amp; Benchmark Developer working with Airdawgs with a B.Tech in Electronics and Communication Engineering from IIIT Manipur.
-          </p>
-
-          <p>
-            My work combines data analysis, SQL development, machine learning, automated data pipelines, Docker, testing, and deterministic benchmark development. I focus on converting complex technical requirements into reliable, reproducible, and well-verified systems.
-          </p>
-
-          <p>
-            I value clear requirements, accurate analysis, reproducible results, edge-case coverage, and practical technical communication.
-          </p>
-
-          <div className="pt-2">
-            <ContactButton />
-          </div>
-        </div>
-
-        <div className="pt-4 border-t border-[#22C55E]/20">
-          <div className="p-5 rounded-2xl bg-[#0B1710] border border-[#22C55E]/25 space-y-2">
-            <h3 className="text-sm font-bold text-[#39FF88] flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-[#22C55E]" />
-              Working Approach
-            </h3>
-            <p className="text-xs text-[#A8B5AC] leading-relaxed">
-              Research, specification, implementation, testing, verification, documentation, and continuous improvement.
-            </p>
-          </div>
-        </div>
-      </div>
-
     </section>
   )
 }

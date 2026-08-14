@@ -7,6 +7,7 @@ import { CoreExpertiseSection } from "./components/creator/CoreExpertiseSection"
 import { ExperienceSection } from "./components/experience/ExperienceSection"
 import { Career } from "./components/portfolio3d/Career"
 import { Contact } from "./components/portfolio3d/Contact"
+import { GoldCursor } from "./components/creator/GoldCursor"
 import { portfolioData } from "./data/portfolioData"
 
 export default function App() {
@@ -16,42 +17,71 @@ export default function App() {
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
 
-      <div className="min-h-screen flex flex-col font-sans bg-[#030604] text-[#F4FFF7] overflow-x-clip selection:bg-[#22C55E] selection:text-[#021006]">
+      {/* Gold cursor (desktop only) */}
+      <GoldCursor />
+
+      <div
+        className="min-h-screen flex flex-col overflow-x-clip"
+        style={{
+          background: "#FAF9F6",
+          color: "#1a1a1a",
+          fontFamily: "'DM Sans', system-ui, sans-serif",
+          // Ivory text selection
+        }}
+      >
         {/* 1 & 2. HEADER, NAVIGATION & HERO SECTION */}
         <HeroSection />
 
         {/* 3. ABOUT ME SECTION */}
         <AboutSection />
 
-        {/* 4. MAIN PROJECTS SECTION (ONE SINGLE PROJECT SECTION WITH CARDS 01, 02, 03, 04) */}
+        {/* 4. PROJECTS SECTION */}
         <ProjectsSection />
 
         {/* 5. CORE EXPERTISE SECTION */}
         <CoreExpertiseSection />
 
-        {/* 6, 7 & 8. MAIN CONTENT CONTAINER: EXPERIENCE, EDUCATION & CERTIFICATIONS, CONTACT */}
-        <main className="container mx-auto max-w-6xl px-4 sm:px-6 py-6 space-y-16 relative z-30">
-          {/* 6. Professional Experience (Airdawgs: Terminus & Sentinel) */}
-          <ExperienceSection />
+        {/* 6. PROFESSIONAL EXPERIENCE */}
+        <ExperienceSection />
 
-          {/* 7. Academic Timeline & Certifications */}
-          <Career />
+        {/* 7. ACADEMIC TIMELINE & CERTIFICATIONS */}
+        <Career />
 
-          {/* 8. Contact Section */}
-          <Contact />
-        </main>
+        {/* 8. CONTACT SECTION */}
+        <Contact />
 
         {/* 9. Footer */}
-        <footer className="border-t border-[#22C55E]/30 py-8 bg-[#071009] text-[#F4FFF7] relative z-30 mt-12">
-          <div className="container mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#A7B5AB]">
+        <footer
+          style={{
+            background: "#1a1a1a",
+            borderTop: "1px solid rgba(201,168,76,0.25)"
+          }}
+          className="py-8"
+        >
+          <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="bg-[#22C55E] text-[#021006] font-black text-[10px] px-2 py-0.5 rounded font-mono">TR</span>
-              <span className="font-bold text-[#F4FFF7]">{portfolioData.personalInfo.name}</span>
-              <span>• Data Analyst &amp; AI Evaluation Developer</span>
+              <span
+                className="font-serif italic text-base font-bold"
+                style={{ color: "#C9A84C" }}
+              >
+                RT
+              </span>
+              <span
+                className="font-sans text-sm font-semibold"
+                style={{ color: "#FFFFFF" }}
+              >
+                {portfolioData.personalInfo.name}
+              </span>
+              <span
+                className="font-mono text-xs"
+                style={{ color: "#888" }}
+              >
+                · Data Analyst &amp; AI Evaluation Developer
+              </span>
             </div>
-            <div>
-              &copy; {new Date().getFullYear()} Ronanki Tagore. All rights reserved.
-            </div>
+            <span className="font-mono text-xs" style={{ color: "#888" }}>
+              © {new Date().getFullYear()} Ronanki Tagore. All rights reserved.
+            </span>
           </div>
         </footer>
       </div>
